@@ -1,23 +1,23 @@
 <?php
+
 /**
  * Created by IntelliJ IDEA.
  * User: Hector
  * Date: 01/02/2017
  * Time: 13:24
  */
-
 class Empleado_model extends CI_Model {
 
     /**
-     * getEmpleado
+     * getEmpleados
      *
      * Returns the Empleado with the packaged data passed as a parameter
      *
      * @param $empleado It must be packed like $empleado = ['nameOfBBDDField' => 'data'] example $person = ['name' => 'john', 'age' => 16]
      * @return Array with the specific Empleado's beans
      */
-    public function getEmpleado($empleado){
-        /* TODO completete */
+    public function getEmpleados($empleado){
+        /* TODO complete */
         $filter = '';
         $arrData = [];
         $keys = array_keys($empleado);
@@ -27,8 +27,9 @@ class Empleado_model extends CI_Model {
             array_push($arrData, $data);
         }
 
-        $bean = R::find('empleado', $filter, $arrData);
-        return $bean;
+        $beans = R::find('empleado', $filter, $arrData);
+        R::close();
+        return $beans;
     }
 
     /**
@@ -46,6 +47,19 @@ class Empleado_model extends CI_Model {
         }
         R::store($bean);
         R::close();
+    }
+
+    /**
+     * getAllEmpleados
+     *
+     * Retrieve all Empleados
+     *
+     * @return Array with all Empleado's beans
+     */
+    public function getAllEmpleados(){
+        $beans = R::findAll('empleado');
+        R::close();
+        return $beans;
     }
 
 
