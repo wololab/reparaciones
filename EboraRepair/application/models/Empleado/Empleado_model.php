@@ -45,8 +45,9 @@ class Empleado_model extends CI_Model {
         foreach ($empleado as $k => $data){
             $bean -> $k = $data;
         }
-        R::store($bean);
+        $id = R::store($bean);
         R::close();
+        return $id;
     }
 
     /**
@@ -62,5 +63,9 @@ class Empleado_model extends CI_Model {
         return $beans;
     }
 
-
+    public function getEmpleadoById($id){
+        $bean = R::load('empleado', $id);
+        R::close();
+        return $bean;
+    }
 }
