@@ -1,46 +1,36 @@
-<!-- Cabecera para desarrollo con Bootstrap online -->
-
-<!--
-<!DOCTYPE html >
-<html lang="es">
-<head>
-    <meta charset="utf-8">
-    <meta name="author" content="Eduardo Reneo"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js">
-    </script>
-
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js">
-    </script>
-
-    <title>Mi proyecto web</title>
-</head>
-<body onload="<?= (isset($head['onload']) ? $head['onload'] : '') ?>">
--->
-
-<!-- ----------------------------------------------------------------------------------------- -->
-
-<!-- Cabecera para desarrollo con Bootstrap offline -->
-
-
-<!DOCTYPE html >
+<!DOCTYPE html>
 <html>
 <head>
 	<meta charset="utf-8">
-	<meta name="author" content="Eduardo Reneo"/>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="EboraRepair">
+	<meta name="author" content="Wololab Development">
 
-	<link href="<?= base_url() ?>assets/css/bootstrap.min.css" rel="stylesheet">
+	<title>ESTATE PLUS - Real Estate HTML5 Website Template</title>
 
-	<script src="<?= base_url() ?>assets/js/jquery.min.js">
-	</script>
+	<!-- Bootstrap core CSS -->
+	<link href="<?=base_url()?>assets/css/bootstrap.css" rel="stylesheet">
 
-	<script src="<?= base_url() ?>assets/js/bootstrap.min.js">
-	</script>
+	<!-- Style CSS -->
+	<link href="<?=base_url()?>assets/css/style.css" rel="stylesheet">
 
-	<title>Mi proyecto web</title>
+	<!-- Google Fonts -->
+	<link href='http://fonts.googleapis.com/css?family=Lato:400,300,400italic,700,700italic,900' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800,300italic,400italic' rel='stylesheet' type='text/css'>
+
+	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!--[if lt IE 9]>
+	<script src="<?=base_url()?>assets/js/html5shiv.js"></script>
+	<script src="<?=base_url()?>assets/js/respond.min.js"></script>
+	<![endif]-->
+
+	<!-- Favicons -->
+	<link rel="shortcut icon" href="<?=base_url()?>assets/ico/favicon.ico" type="image/x-icon">
+	<link rel="apple-touch-icon" href="<?=base_url()?>assets/ico/apple-touch-icon.png" />
+	<link rel="apple-touch-icon" sizes="57x57" href="<?=base_url()?>assets/ico/apple-touch-icon-57x57.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="<?=base_url()?>assets/ico/apple-touch-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="<?=base_url()?>assets/ico/apple-touch-icon-114x114.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="<?=base_url()?>assets/ico/apple-touch-icon-144x144.png">
+
 </head>
-<body onload="<?= (isset($head['onload']) ? $head['onload'] : '') ?>">
+<body>
