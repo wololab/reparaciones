@@ -3,10 +3,12 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="keywords" content="parabrisas, lunas, rotura, reparación, sustitución, cambio de lunas, impacto, automóvil,
+	cristalería, cristalería del automóvil, antilluvia, ecológico"/>
 	<meta name="description" content="EboraRepair">
 	<meta name="author" content="Wololab Development">
 
-	<title>ESTATE PLUS - Real Estate HTML5 Website Template</title>
+	<title>Ebora Repair</title>
 
 	<!-- Bootstrap core CSS -->
 	<link href="<?=base_url()?>assets/css/bootstrap.css" rel="stylesheet">
@@ -33,4 +35,4 @@
 	<link rel="apple-touch-icon" sizes="144x144" href="<?=base_url()?>assets/ico/apple-touch-icon-144x144.png">
 
 </head>
-<body>
+<body onload="<?= (isset($body['onload']) ? $body['onload'] : '') ?>">

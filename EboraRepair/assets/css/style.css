@@ -36,7 +36,7 @@
 		color:#656565;
 		padding:0;
 		margin:0;
-	  background:#f3f3f3;
+	  	background:#f3f3f3;
 	}
 
 	html {
@@ -539,6 +539,12 @@
 		color: #FFFFFF;
 		text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
 	}
+
+	#accountlogin2 a{
+		background: none repeat scroll 0 0 #010101;
+		color: #FFFFFF;
+		text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+	}
 	
 /*	################################################################
 	3. SITE STYLES
@@ -585,6 +591,10 @@
 		line-height: 40px;
 		margin: 30px 0;
 		text-transform:uppercase;
+	}
+
+	h3.big_title {
+		color: #E53317
 	}
 	
 	.big_title small {
@@ -1211,6 +1221,7 @@
 		padding-top: 8px;
 		font-weight:700;
 		text-transform: uppercase;
+		color: #E53317;
 	}
 	
 	.ps-desc h3 a {
@@ -1973,13 +1984,13 @@
 	.testimonial_desc p i,
 	.agents_widget i,
 	.callus i {
-		color:#19B8DF;
+		color:#E53317;
 	}
 		
 	.fhmm .dropdown-menu > li > a:hover,
 	.fhmm .dropdown-menu > li > a:focus,
 	.searchmodule {
-		background-color:#19B8DF;
+		background-color:#E53317;
 	}
 	
 	.pagination > .active > a, .pagination > .active > span, 
@@ -2014,26 +2025,26 @@
 	.ps-mini-desc .price,
 	.blog-wrap div.post-date span.month,
 	.ps-desc .price {
-		background-color:#19B8DF;
+		background-color:#E53317;
 		color: #ffffff;
 		text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
 	}
 
 	.topbar,
 	.fhmm .dropdown-menu {
-		border-top-color:#19B8DF
+		border-top-color:#E53317
 	}
 	
 	.post-wrapper-top h2 {
-		border-bottom-color:#19B8DF
+		border-bottom-color:#E53317
 	}
 	
 	.navbar.affix {
-		border-bottom:3px solid #19B8DF !important
+		border-bottom:3px solid #E53317 !important
 	}
 
 	.hovicon.effect-1:after {
-		box-shadow: 0 0 0 4px #19B8DF;
+		box-shadow: 0 0 0 4px #E53317;
 	}
 
 	
@@ -2075,8 +2086,10 @@
 	.widget ul.tweet li a,
 	div.popup ul li a:hover,
 	div.popup ul li a:focus,
-	div.popup ul li a:active {
-		color:#F6700E
+	div.popup ul li a:active,
+	h2.title,
+	h1.title{
+		color:#F2880E
 	}
 
 	.btn-primary:hover,
@@ -2093,24 +2106,24 @@
 	.ps-desc .status,
 	.pricing-table > .price .name,
 	ul.real-estate-cats-widget li ul li:before {
-		background-color:#F6700E;
+		background-color:#F2880E;
 		color: #ffffff;
 		text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
 	}
 	
 	.form-control:focus,
 	ul.real-estate-cats-widget li ul {
-		border-color:#F6700E;
+		border-color:#F2880E;
 	}
 	
 	.btn-primary {
-		background: #F6700E !important;
+		background: #F2880E !important;
 		border-color: #EF6907 !important;
 	}
 	
 	.btn-primary:active,
 	.btn-primary.active {
-		background-color: #F6700E \9 !important;
+		background-color: #F2880E \9 !important;
 	}
 	
 /*	################################################################
@@ -2201,3 +2214,112 @@
 	.infobox .title a {
 		font-weight:bold;
 	}
+
+/* ============================================
+CSS COOKIES
+=============================================== */
+
+/* CSS para la animación y localización de los DIV de cookies */
+
+@keyframes desaparecer
+{
+	0%		{bottom: 0px;}
+	80%		{bottom: 0px;}
+	100%	{bottom: 0px;}
+}
+
+@-webkit-keyframes desaparecer /* Safari and Chrome */
+{
+	0%		{bottom: 0px;}
+	80%		{bottom: 0px;}
+	100%	{bottom: 0px;}
+}
+
+@keyframes aparecer
+{
+	0%		{bottom: 0px;}
+	10%		{bottom: 0px;}
+	90%		{bottom: 0px;}
+	100%	{bottom: 0px;}
+}
+
+@-webkit-keyframes aparecer /* Safari and Chrome */
+{
+	0%		{bottom: 0px;}
+	10%		{bottom: 0px;}
+	90%		{bottom: 0px;}
+	100%	{bottom: 0px;}
+}
+#cookie1:target {
+	display: none;
+}
+.cookiesms{
+	width:100%;
+	height:12%;
+	margin:0 auto;
+	padding-left:1%;
+	padding-top:5px;
+	font-size: 1.2em;
+	clear:both;
+	font-weight: bolder;
+	color: #444;
+	bottom:0px;
+	position:fixed;
+	left: 0px;
+	background-color: #FFF;
+	opacity:0.9;
+	filter:alpha(opacity=90); /* For IE8 and earlier */
+	transition: bottom 1s;
+	-webkit-transition:bottom 1s; /* Safari */
+	-webkit-box-shadow: 3px -3px 1px rgba(50, 50, 50, 0.56);
+	-moz-box-shadow:    3px -3px 1px rgba(50, 50, 50, 0.56);
+	box-shadow:         3px -3px 1px rgba(50, 50, 50, 0.56);
+	z-index:999999999;
+}
+
+.cookiesms:hover{
+	bottom:0px;
+}
+.cookies2{
+	background-color: #FFF;
+	display:inline;
+	opacity:0.95;
+	filter:alpha(opacity=95);
+	position:absolute;
+	left:1%;
+	top:-30px;
+	font-size:15px;
+	height:30px;
+	padding-top: 6px;
+	padding-left:25px;
+	padding-right:25px;
+	-webkit-border-top-right-radius: 15px;
+	-webkit-border-top-left-radius: 15px;
+	-moz-border-radius-topright: 15px;
+	-moz-border-radius-topleft: 15px;
+	border-top-right-radius: 15px;
+	border-top-left-radius: 15px;
+	-webkit-box-shadow: 3px -3px 1px rgba(50, 50, 50, 0.56);
+	-moz-box-shadow:    3px -3px 1px rgba(50, 50, 50, 0.56);
+	box-shadow:         3px -3px 1px rgba(50, 50, 50, 0.56);
+}
+
+/* End CSS cookies */
+
+ul.listContacto{
+	list-style: none;
+	text-decoration: none;
+}
+
+.box_style_1{
+	padding:20px 25px 5px 25px;
+	box-shadow: inset 0 0 0 1px #e0e5e9;
+	border:5px solid #fbfbfc;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	margin-bottom:30px;
+	font-size:13px;
+	line-height:20px;
+	background-color:#ddd;
+}

@@ -1,5 +1,6 @@
 <div class="container">
     <form action="<?=base_url()?>reparacion/reparacion/datosReparacion" method="post"> <!-- Datos reparacion debe guardar en sesion los datos y desplegar para las imagenes DEL-->
+        <br/>
         <i>Los campos marcados con * son obligatorios</i>
         <fieldset>
             <label for="fecha">Fecha *</label>
@@ -14,7 +15,7 @@
             <label for="modelo">Modelo *</label>
             <input type="text" class="form-control" id="modelo" name="modelo" required="required"/>
             <label for="anio">Año *</label>
-            <input type="number" class="form-control" id="anio" name="anio" required="required"/>
+            <input type="number" class="form-control" id="anio" name="anio" min="1885" max="<?= date('Y') ?>" required="required"/>
             <label for="matricula">Matrícula *</label>
             <input type="text" class="form-control" id="matricula" name="matricula" required="required"/>
             <label for="bastidor">Bastidor *</label>
