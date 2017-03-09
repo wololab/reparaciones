@@ -53,7 +53,7 @@
             <label for="fechaSin">Fecha Siniestro *</label>
             <input type="date" class="form-control" id="fechaSin" name="fechaSin" required="required"/>
             <label for="aseguradora">Aseguradora *</label>
-            <input type="date" class="form-control" id="aseguradora" name="aseguradora" required="required"/>
+            <input type="text" class="form-control" id="aseguradora" name="aseguradora" required="required"/>
             <label for="tipo">Tipo de Siniestro *</label>
             <input type="text" class="form-control" id="tipo" name="tipo" required="required"/> <!-- TODO select? -->
         </fieldset>
