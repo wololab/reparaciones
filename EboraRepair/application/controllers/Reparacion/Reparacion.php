@@ -62,7 +62,7 @@ class Reparacion extends CI_Controller
         $anioPersona = $fechaPersonaSplit[2];
         $horaPersona = $_POST['horaPer'];
 
-        $taller = $this->guardaTaller(); /* DEL */
+        $taller = $this->guardaTaller(); /* DEL a */
         $cliente = $this->guardaCliente($nombre, $ape1, $ape2, $direccion, $cp, $poblacion, $telefono, $email);
         $coche = $this->guardaCoche($matricula, $bastidor, $marca, $modelo, $anio, $color, $kms);
         $_SESSION['idReparador'] = 1; // Esto será la que esté en usuActivo
