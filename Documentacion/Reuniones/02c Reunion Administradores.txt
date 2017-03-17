@@ -1,0 +1,15 @@
+
+Tipos de filtrado
+
+1-facturadas o no (a parte)
+2-fecha o periodo
+3-matricula
+4-aseguradora
+5-reparador
+6-taller
+7-cliente
+8-modelo
+9-CIUDAD
+
+Las reparaciones se guardan como fecha-matricula
+

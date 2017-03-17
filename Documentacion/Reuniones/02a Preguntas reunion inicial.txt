@@ -1,0 +1,44 @@
+
+ESTAS PREGUNTAS DEBEN QUEDAR CLARAS EN LA REUNIÓN DE INICIO DEL PROYECTO
+CUANDO EL CLIENTE HAYA DADO LUZ VERDE AL PROYECTO Y HAYA EFECTUADO EL PRIMER PAGO
+PUEDE QUE ESTA REUNIÓN SEA TAMBIÉN LA DE PRESENTACIÓN DEL MOCKUP
+PUEDE QUE ESTA REUNIÓN SE HAGA EL MISMO DÍA DE PRESENTACIÓN DEL PROYECTO 
+SI HAY CONFIANZA SUFICIENTE CON EL CLIENTE COMO PARA NO ESPERAR AL PRIMER PAGO.
+____________________________________________________________________________
+
+¿Qué redes sociales hay que crear e integrar? (Solo gestionamos redes sociales si contratan el servicio). 
+
+¿Cuáles son las palabras destacadas?
+
+¿Qué información deben aportar los usuarios en el formulario de contacto? [
+																																Nombre
+																																Apellidos
+																																Dirección
+																																Émail
+																																Teléfono
+																																Razón del contacto
+																																Mensaje
+																																]
+¿Qué campos del formulario de contacto son obligatorios?
+																																
+¿Cuáles van a ser las cinco cuentas de mail? [
+																			info@ejemplo.com
+																			administracion@ejemplo.com
+																			comercial@ejemplo.com
+																			nombreempresa@ejemplo.com
+																			nombreapellido@ejemplo.com
+																			]
+¿Cuáles de las cuentas de mail van a aparecer en la web como cuentas de contacto?
+																			
+¿Cuáles van a ser los colores básicos de la web?
+
+¿El tratamiento al usuario debe ser de tú o de usted?
+
+¿Qué teléfonos de contacto deben aparecer?
+
+
+
+
+
+
+

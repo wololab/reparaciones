@@ -1,0 +1,31 @@
+
+
+
+Fotos por pasos, 7 fotos obligatorias + 1 opcional (para fotos extra ocasionales)
+
+1- matricula y luna
+2- detalle luna
+3- permiso de circulación
+4- poliza (no obligatoria)
+5- recibo (no obligatorio) El recibo se debe poder añadir a posteriori por el administrador
+6- maquina de reparar o Luna Quitada
+7- Orden de trabajo
+8-Impacto reparado o luna montada (No obligatoria)
+9- n fotos opcionales (Con título descriptivo de que trata la foto)
+
+Si falta la póliza avisar de alguna manera al administrador si la reparación requiere de algún añadido (Sobre todo póliza)
+reparador solo crea
+
+antes de la creacion del coche que se puedan cambiar todas las fotos
+
+reparacion depende de reparador pero no borra en cascada
+
+¿Qué redes sociales hay que integrar?
+Hacer AMBAS
+-facebook
+-twitter
+-
+
+
+
+

@@ -1,0 +1,108 @@
+
+Borrar un taller solo será posible si no tiene empleados asociados. -> LOS TALLERES NO TIENEN EMPLEADOS ASOCIADOS
+
+¿Listar empleados lista los empleados dados de baja? ¿Se quiere acceder a los empleados dados de baja en algún momento?
+Se deben ver indicando que están inactivos o activos, en 3 vistas (todos-activos-inactivos)
+
+En la vista de la reparación, ¿qué datos del reparador, cliente y taller deben aparecer?
+fecha y reparador en lista y todos los datos en vista detalles
+
+¿Entrarán a la aplicación mediante un nombre de usuario o mediante el id?
+nombre de usuario
+
+¿Se necesita registrar la hora de la reparación o solo la fecha?
+tambien la hora sin separar minutos y horas
+
+¿El usuario puede cambiar su contraseña? (la contraseña inicial se genera automáticamente).
+¿Los usuarios deben tener un mail?
+Si de Luis
+
+¿Necesitas saber cuántas veces ha sido reparado un mismo coche o cuántas reparaciones ha hecho un mismo cliente?
+(si no se necesita consultar coches o clientes no se guardan en la base de forma independiente)
+TODO EN LA REPARACION - SI DE ADMINISTRADORES
+
+dos reparaciones independientes
+
+¿qué datos del asegurado y qué datos del siniestro se necesitan?
+los 4 indicados en la foto 
+
+¿hay que incluir por qué ha elegido el taller? 
+No de Luis
+
+¿hay diferencia entre la persona que acude con el vehiculo y la persona que tiene asegurado el vehiculo?
+Si, hay diferencia y deben estar incluidos ambos
+EL TOMADOR ES EL CLIENTE
+
+¿se necesita la dirección completa del cliente o solo la población y el código postal?
+TODO
+
+¿La fecha y la hora la pone el reparador o la pone la aplicación?
+El reparador mete la fecha y la hora  a mano
+
+¿Si hay varias lunas rotas cuenta como varias reparaciones o se registran en esa reparación todas las lunas reparadas?
+varias reparaciones
+
+¿Se registran los talleres que no son de la empresa? ¿cómo se indica que un coche ha sido derivado a un taller externo?
+los administradorespueden derivar reparaciones a otros talleres y deben quedar asociadas al reparador y al taller al que van
+matrícula, compañia aseguradora y tipo de reparación
+
+¿las observaciones (dibujo del coche) deben guardarse en la base de datos?
+NO de Luis
+
+¿qué tipo de imágenes se guardan?
+
+1- matricula y luna
+2- detalle luna
+3- permiso de circulación
+4- poliza (no obligatoria)
+5- recibo (no obligatorio) El recibo se debe poder añadir a posteriori por el administrador
+6- maquina de reparar o Luna Quitada
+7- Orden de trabajo
+8-Impacto reparado o luna montada (No obligatoria)
+9- n fotos opcionales (Con título descriptivo de que trata la foto)
+
+Necesito datos de facturación para la factura del dominio y el alojamiento.
+925807287 Isabel
+
+Necesito material gráfico y textos para la web.
+
+Palabras destacadas: Parabrisas, lunas, rotura, reparación, sustitución, cambio de lunas, impacto, automóvil, cristalería, cristalería del automóvil, antilluvia, ecológico
+
+info@eborarepair.com
+administracion@eborarepair.com
+comercial@eborarepair.com
+reparadores@eborarepair.com
+luismerino@eborarepair.com
+
+
+PARA LA WEB
+info@eborarepair.com
+eborarepair@hotmail.com
+
+dirección:
+Av. de Pio XII nº20
+45600 Talavera de la Reina
+
+Tratamiento de usted
+
+605615647
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
