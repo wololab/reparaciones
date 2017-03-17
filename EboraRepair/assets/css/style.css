@@ -2323,3 +2323,9 @@ ul.listContacto{
 	line-height:20px;
 	background-color:#ddd;
 }
+
+img.previewForm {
+	width: 100px;
+	height: 100px;
+	display: none;
+}

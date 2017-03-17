@@ -53,6 +53,13 @@ class Reparacion_model extends CI_Model
         return $id;
     }
 
+    public function asociaImagenes($id, $imagenes){
+        $reparacion = $this->getReparacionById($id);
+        $reparacion->xownImagenReparacionList = $imagenes;
+        R::store($reparacion);
+        R::close();
+    }
+
     /**
      * getAllReparacions
      *

@@ -32,15 +32,12 @@ function empaquetaTallerEmpleado($nick, $password, $codTaller, $tfno, $email, $r
     ];
     return $empleado;
 }
-function empaquetaImagenReparacion($src, $alt, $titulo, $idReparacion)
+function empaquetaImagenReparacion($src, $alt, $titulo)
 {
-    $this->load->model('Reparacion/Reparacion_model');
-    $reparacion = $this->Reparacion_model->getReparacionById($idReparacion);
     $imagenReparacion = [
         'src' => $src,
         'alt' => $alt,
         'titulo' => $titulo,
-        'reparacion' => $reparacion
     ];
     return $imagenReparacion;
 }
@@ -81,13 +78,13 @@ function empaquetaReparacion($nombreOrdenante, $primerApOrdenante, $segundoApOrd
         'taller' => $taller,
         'empleado' => $empleado,
         'cliente' => $cliente,
-        'coche' => $coche
+        'coche' => $coche,
     ];
 
     return $reparacion;
 }
 
-function empaquetaCliente($nombre, $primerAp, $segundoAp, $direccion, $cp, $poblacion, $tfno, $email)
+function empaquetaCliente($nombre, $primerAp, $segundoAp, $direccion, $cp, $poblacion, $tfno, $email, $dni)
 {
     $cliente = [
         'nombre' => $nombre,
@@ -97,7 +94,8 @@ function empaquetaCliente($nombre, $primerAp, $segundoAp, $direccion, $cp, $pobl
         'cp' => $cp,
         'poblacion' => $poblacion,
         'telefono' => $tfno,
-        'email' => $email
+        'email' => $email,
+        'dni' => $dni
     ];
     return $cliente;
 }

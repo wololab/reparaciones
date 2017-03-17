@@ -13,6 +13,11 @@
 	<!-- Bootstrap core CSS -->
 	<link href="<?=base_url()?>assets/css/bootstrap.css" rel="stylesheet">
 
+    <!-- Jquery UI CSS -->
+    <link href="<?=base_url()?>assets/JqueryUI/jquery-ui.css" rel="stylesheet">
+    <link href="<?=base_url()?>assets/JqueryUI/jquery-ui.structure.css" rel="stylesheet">
+    <link href="<?=base_url()?>assets/JqueryUI/jquery-ui.theme.css" rel="stylesheet">
+
 	<!-- Style CSS -->
 	<link href="<?=base_url()?>assets/css/style.css" rel="stylesheet">
 
@@ -25,6 +30,12 @@
 	<script src="<?=base_url()?>assets/js/html5shiv.js"></script>
 	<script src="<?=base_url()?>assets/js/respond.min.js"></script>
 	<![endif]-->
+
+    <!-- Jquery js -->
+    <script src="<?=base_url()?>assets/js/jquery.min.js"></script>
+
+    <!-- Jquery UI js -->
+    <script src="<?=base_url()?>assets/JqueryUI/jquery-ui.min.js"></script>
 
 	<!-- Favicons -->
 	<link rel="shortcut icon" href="<?=base_url()?>assets/ico/favicon.ico" type="image/x-icon">
