@@ -97,6 +97,9 @@
 <script src="<?=base_url()?>assets/fancyBox/jquery.fancybox.pack.js"></script>
 <script src="<?=base_url()?>assets/js/application.js"></script>
 
+<!-- Jquery UI js -->
+<script src="<?=base_url()?>assets/JqueryUI/jquery-ui.min.js"></script>
+
 <!-- FlexSlider JavaScript
 ================================================== -->
 <script src="<?=base_url()?>assets/js/jquery.flexslider.js"></script>

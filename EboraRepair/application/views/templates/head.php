@@ -31,12 +31,6 @@
 	<script src="<?=base_url()?>assets/js/respond.min.js"></script>
 	<![endif]-->
 
-    <!-- Jquery js -->
-    <script src="<?=base_url()?>assets/js/jquery.min.js"></script>
-
-    <!-- Jquery UI js -->
-    <script src="<?=base_url()?>assets/JqueryUI/jquery-ui.min.js"></script>
-
 	<!-- Favicons -->
 	<link rel="shortcut icon" href="<?=base_url()?>assets/ico/favicon.ico" type="image/x-icon">
 	<link rel="apple-touch-icon" href="<?=base_url()?>assets/ico/apple-touch-icon.png" />
