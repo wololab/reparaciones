@@ -1,120 +1,141 @@
 <?php
-
-/**
- * Created by IntelliJ IDEA.
- * User: Hector
- * Date: 02/02/2017
- * Time: 17:40
- */
 class Reparacion extends CI_Controller
 {
 
-    public function guardaReparacion(){ //TODO
+    public function datosReparacion()
+    {
         session_start();
-        $this->load->helper('empaquetar');
+
 
 
         /* Fecha y hora */
         $fecha = $_POST['fecha'];
-        $hora = $_POST['hora'];
-        $fechaSplit = explode('/', $fecha);
-        $dia = $fechaSplit[0];
-        $mes = $fechaSplit[1];
-        $anio = $fechaSplit[2];
+        $_SESSION['hora'] = $_POST['hora'];
+        $fechaSplit = explode('-', $fecha);
+        $_SESSION['dia'] = $fechaSplit[2];
+        $_SESSION['mes'] = $fechaSplit[1];
+        $_SESSION['anio'] = $fechaSplit[0];
 
         /* Datos Vehículo */
-        $marca = $_POST['marca'];
-        $modelo = $_POST['modelo'];
-        $anio = $_POST['anio'];
-        $matricula = $_POST['matricula'];
-        $bastidor = $_POST['bastidor'];
-        $kms = $_POST['kms'];
-        $color = isset($_POST['color'])?$_POST['color']:'Color no definido'; /* TODO que habrá por defecto? */
+        $_SESSION['marca'] = $_POST['marca'];
+        $_SESSION['modelo'] = $_POST['modelo'];
+        $_SESSION['anioCoche'] = $_POST['anio'];
+        $_SESSION['matricula'] = $_POST['matricula'];
+        $_SESSION['bastidor'] = $_POST['bastidor'];
+        $_SESSION['kms'] = $_POST['kms'];
+        $_SESSION['color'] = isset($_POST['color']) ? $_POST['color'] : 'Color no definido'; /* TODO que habrá por defecto? */
 
         /* Datos Asegurado */
-        $nombre = $_POST['nombre'];
-        $ape1 = $_POST['ape1'];
-        $ape2= $_POST['ape2'];
-        $direccion = $_POST['direccion'];
-        $cp = $_POST['cp'];
-        $poblacion = $_POST['poblacion'];
-        $telefono = $_POST['telefono'];
-        $email = $_POST['email'];
-        $dni = $_POST['dni'];
+        $_SESSION['nombre'] = $_POST['nombre'];
+        $_SESSION['ape1'] = $_POST['ape1'];
+        $_SESSION['ape2'] = $_POST['ape2'];
+        $_SESSION['direccion'] = $_POST['direccion'];
+        $_SESSION['cp'] = $_POST['cp'];
+        $_SESSION['poblacion'] = $_POST['poblacion'];
+        $_SESSION['telefono'] = $_POST['telefono'];
+        $_SESSION['email'] = $_POST['email'];
+        $_SESSION['dni'] = $_POST['dni'];
 
         /* Datos Siniestro */
-        $numeroSiniestro = $_POST['nSin'];
-        $numeroPoliza = $_POST['nPol'];
+        $_SESSION['numeroSiniestro'] = $_POST['nSin'];
+        $_SESSION['numeroPoliza'] = $_POST['nPol'];
         $fechaSiniestro = $_POST['fechaSin'];
-        $fechaSiniestroSplit = explode('/', $fechaSiniestro);
-        $diaSiniestro = $fechaSiniestroSplit[0];
-        $mesSiniestro = $fechaSiniestroSplit[1];
-        $anioSiniestro = $fechaSiniestroSplit[2];
-        $aseguradora = $_POST['aseguradora'];
-        $tipo = $_POST['tipo'];
+        $fechaSiniestroSplit = explode('-', $fechaSiniestro);
+        $_SESSION['diaSiniestro'] = $fechaSiniestroSplit[2];
+        $_SESSION['mesSiniestro'] = $fechaSiniestroSplit[1];
+        $_SESSION['anioSiniestro'] = $fechaSiniestroSplit[0];
+        $_SESSION['aseguradora'] = $_POST['aseguradora'];
+        $_SESSION['tipo'] = $_POST['tipo'];
 
         /* Persona que acude con el vehículo al taller */
-        $nombrePersona = $_POST['nombrePer'];
-        $ape1Persona = $_POST['ape1Per'];
-        $ape2Persona = $_POST['ape2Per'];
-        $dniPersona = $_POST['dni'];
-        $telefonoPersona = $_POST['telefonoPer'];
+        $_SESSION['nombrePersona'] = $_POST['nombrePer'];
+        $_SESSION['ape1Persona'] = $_POST['ape1Per'];
+        $_SESSION['ape2Persona'] = $_POST['ape2Per'];
+        $_SESSION['dniPersona'] = $_POST['dni'];
+        $_SESSION['telefonoPersona'] = $_POST['telefonoPer'];
 
-        $taller = $this->guardaTaller(); /* DEL a */
-        $cliente = $this->guardaCliente($nombre, $ape1, $ape2, $direccion, $cp, $poblacion, $telefono, $email, $dni);
-        $coche = $this->guardaCoche($matricula, $bastidor, $marca, $modelo, $anio, $color, $kms);
-        $_SESSION['idReparador'] = 1; // Esto será la que esté en usuActivo
+        redirect('aplicacion/formularioImagenes');
+
+    }
+
+    public function registrarReparacion()
+    {
+        session_start();
+        $this->load->helper('empaquetar');
+        $taller = $this->guardaTaller(); /* DEL  */
+        $cliente = $this->guardaCliente($_SESSION['nombre'], $_SESSION['ape1'], $_SESSION['ape2'],
+            $_SESSION['direccion'], $_SESSION['cp'], $_SESSION['poblacion'], $_SESSION['telefono'], $_SESSION['email'],
+            $_SESSION['dni']);
+        $coche = $this->guardaCoche($_SESSION['matricula'], $_SESSION['bastidor'], $_SESSION['marca'],
+            $_SESSION['modelo'], $_SESSION['anioCoche'], $_SESSION['color'], $_SESSION['kms']);
+        $_SESSION['idReparador'] = 1; // DEL Esto será la que esté en usuActivo
         $idEmpleado = $_SESSION['idReparador'];
         $this->load->model('Empleado/Empleado_model');
         $empleado = $this->Empleado_model->getEmpleadoById($idEmpleado);
-        $reparacion = empaquetaReparacion($nombrePersona, $ape1Persona, $ape2Persona, $dniPersona, $telefonoPersona, $diaPersona, $mesPersona, $anioPersona, $horaPersona, $tipo,
-           $aseguradora, $numeroSiniestro, $numeroPoliza, $diaSiniestro, $mesSiniestro, $anioSiniestro, $taller, $empleado, $cliente, $coche);
+        $reparacion = empaquetaReparacion($_SESSION['nombrePersona'], $_SESSION['ape1Persona'], $_SESSION['ape2Persona'],
+            $_SESSION['dniPersona'], $_SESSION['telefonoPersona'], $_SESSION['dia'], $_SESSION['mes'],
+            $_SESSION['anio'], $_SESSION['hora'], $_SESSION['tipo'], $_SESSION['aseguradora'],
+            $_SESSION['numeroSiniestro'], $_SESSION['numeroPoliza'], $_SESSION['diaSiniestro'], $_SESSION['mesSiniestro'],
+            $_SESSION['anioSiniestro'], $taller, $empleado, $cliente, $coche);
         $this->load->model('Reparacion/Reparacion_model');
-        $idReparacion = $this->Reparacion_model->saveReparacion($reparacion); /* TODO comprobar si esto guarda a través del formulario después de resolver dudillas */
-        $imagenes = $this->guardaImagenes($_FILES, $idReparacion, $_POST);
-        $this->Reparacion_model->asociaImagenes($idReparacion, $imagenes); /* TODO comprobar si todo esto funciona */
+        $idReparacion = $this->Reparacion_model->saveReparacion($reparacion); /* TODO comprobar si esto guarda a través del formulario */
+        $this->guardaImagenes($_FILES, $idReparacion, $_POST);
         echo $idReparacion;
-      //  redirect('ImagenReparacion/ImagenReparacion/guardaImagenReparacion'); //TODO que tambien guarde las imagenes
     }
 
-    public function guardaImagenes($FILES, $idReparacion, $POST){
-        $matricula = $this->guardaImagen($FILES ['matricula'], 'Matrícula', $idReparacion);
-        $detalleLuna = $this->guardaImagen($FILES ['detalleLuna'], 'Detalle de Luna', $idReparacion);
-        $permiso = $this->guardaImagen($FILES ['permiso'], 'Permiso de Circulación', $idReparacion);
-        $maquinaRepararOLunaQuitada = $this->guardaImagen($FILES ['maquinaOLunaQuitada'], 'Máquina de Reparar o Luna Quitada', $idReparacion);
-        $ordenTrabajo = $this->guardaImagen($FILES ['ordenTrabajo'], 'Orden de Trabajo', $idReparacion);
-        $poliza = isset($FILES['poliza'])?$this->guardaImagen($FILES['poliza'], 'Póliza', $idReparacion):empaquetaImagenReparacion('','', '');
-        $recibo = isset($FILES['recibo'])?$this->guardaImagen($FILES['recibo'], 'Recibo', $idReparacion):empaquetaImagenReparacion('','', '');
-        $impactoOLunaMontada = isset($FILES['impactoOLunaMontada'])?$this->guardaImagen($FILES['impactoOLunaMontada'], 'Impacto o Luna Montada', $idReparacion):empaquetaImagenReparacion('','', '');
-        $imagenesExtra = [];
-        for($i = 0; isset($FILES['img'.$i]); $i += 1){
-            array_push($imagenesExtra, $this->guardaImagen($FILES['img'.$i], $POST['nombre'.$i], $idReparacion));
+    public function guardaImagenes($FILES, $idReparacion, $POST)
+    {
+        $this->load->model('ImagenReparacion/ImagenReparacion_model');
+        $this->guardaImagen($FILES ['matricula'], 'Matrícula', 'matricula', $idReparacion);
+        $this->guardaImagen($FILES ['detalleLuna'], 'Detalle de Luna', 'detalleLuna', $idReparacion);
+        $this->guardaImagen($FILES ['permiso'], 'Permiso de Circulación', 'permisoCirculacion', $idReparacion);
+        $this->guardaImagen($FILES ['maquinaOLunaQuitada'], 'Máquina de Reparar o Luna Quitada',
+            'maquinaRepararOLunaQuitada', $idReparacion);
+        $this->guardaImagen($FILES ['ordenTrabajo'], 'Orden de Trabajo', 'ordenTrabajo', $idReparacion);
+        file_exists($FILES['poliza']['tmp_name']) ||
+        is_uploaded_file($FILES['poliza']['tmp_name']) ? $this->guardaImagen($FILES['poliza'], 'Póliza', 'poliza',
+            $idReparacion) : $this->guardaImagen('', 'Póliza', 'poliza', $idReparacion);
+        file_exists($FILES['recibo']['tmp_name']) ||
+        is_uploaded_file($FILES['recibo']['tmp_name']) ? $this->guardaImagen($FILES['recibo'], 'Recibo', 'recibo',
+            $idReparacion) : $this->guardaImagen('', 'Recibo', 'recibo', $idReparacion);
+        file_exists($FILES['impactoOLunaMontada']['tmp_name']) ||
+        is_uploaded_file($FILES['impactoOLunaMontada']['tmp_name']) ? $this->guardaImagen($FILES['impactoOLunaMontada'],
+            'Impacto o Luna Montada', 'imactoOLunaMontada', $idReparacion) : $this->guardaImagen('',
+            'Impacto o Luna Montada', 'impactoOLunaMontada', $idReparacion);
+        for ($i = 1; true; $i += 1) {
+            if(!isset($FILES['img'.$i])){
+                break;
+            }
+            $this->guardaImagen($FILES['img'.$i], $POST['titulo'.$i], 'imagenExtra'.$i, $idReparacion);
         }
-        $imagenes = [
-            $matricula,
-            $detalleLuna,
-            $permiso,
-            $maquinaRepararOLunaQuitada,
-            $ordenTrabajo,
-            $poliza,
-            $recibo,
-            $impactoOLunaMontada,
-            $imagenesExtra
-        ];
-        return $imagenes;
-
     }
 
-    public function guardaImagen($imagen, $nombre, $idReparacion){
-        $tmp = explode ( ".", $imagen ['name'] );
-        $nombreNuevo = $nombre . '.' . end ( $tmp );
-        $rutaDestino = './assets/imgs/reparaciones/'. $idReparacion . '/' . $nombreNuevo;
-        move_uploaded_file ( $imagen ['tmp_name'], $rutaDestino );
-        $imagen = empaquetaImagenReparacion($rutaDestino, $nombre, $nombre);
-        return $imagen;
+    public function guardaImagen($imagen, $titulo, $nombre, $idReparacion)
+    {
+
+        if($imagen != '') {
+            $tmp = explode('.', $imagen ['name']);
+            $nombreNuevo = $nombre . '.' . end($tmp);
+            $rutaDestino = './assets/img/reparaciones/' . $idReparacion . '/' . $nombreNuevo;
+            if (!file_exists('./assets/img/reparaciones/' . $idReparacion . '/')) {
+                mkdir('./assets/img/reparaciones/' . $idReparacion . '/');
+            }
+            move_uploaded_file($imagen ['tmp_name'], $rutaDestino);
+
+        } else {
+            $rutaDestino = './assets/img/reparaciones/noimage.png';
+        }
+        $imagen = empaquetaImagenReparacion($rutaDestino, $nombre, $titulo);
+        $this->load->model('ImagenReparacion/ImagenReparacion_model');
+        $idImagenBean = $this->ImagenReparacion_model->saveImagenReparacion($imagen);
+        $imagenBean = $this->ImagenReparacion_model->getImagenReparacionById($idImagenBean);
+        $this->load->model('Reparacion_model');
+        $this->Reparacion_model->asociaImagen($idReparacion, $imagenBean); /* TODO comprobar vale con .assets si luego pongo baseurl en html o hay que ponerlo aqui */
     }
 
-    public function guardaTaller(){
+    public function guardaTaller()
+    {
+
         $this->load->model('Taller/Taller_model');
         $taller = empaquetaTaller('pepe', 'madrid', 676885576, 'calle pepe', 'hhdhd'); //TODO via post, TODO preguntar como recoger esto
         $id = $this->Taller_model->saveTaller($taller);
@@ -122,7 +143,8 @@ class Reparacion extends CI_Controller
         return $taller;
     }
 
-    public function guardaCliente($nombre, $ape1, $ape2, $direccion, $cp, $poblacion, $telefono, $email, $dni){
+    public function guardaCliente($nombre, $ape1, $ape2, $direccion, $cp, $poblacion, $telefono, $email, $dni)
+    {
         $this->load->model('Cliente/Cliente_model');
         $cliente = empaquetaCliente($nombre, $ape1, $ape2, $direccion, $cp, $poblacion, $telefono, $email, $dni);
         $id = $this->Cliente_model->saveCliente($cliente);
@@ -130,7 +152,8 @@ class Reparacion extends CI_Controller
         return $cliente;
     }
 
-    public function guardaCoche($matricula, $bastidor, $marca, $modelo, $anio, $color, $kms){
+    public function guardaCoche($matricula, $bastidor, $marca, $modelo, $anio, $color, $kms)
+    {
         $this->load->model('Coche/Coche_model');
         $coche = empaquetaCoche($matricula, $bastidor, $marca, $modelo, $anio, $color, $kms);
         $id = $this->Coche_model->saveCoche($coche);;

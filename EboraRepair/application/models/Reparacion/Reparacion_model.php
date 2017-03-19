@@ -1,11 +1,4 @@
 <?php
-
-/**
- * Created by IntelliJ IDEA.
- * User: Hector
- * Date: 02/02/2017
- * Time: 17:10
- */
 class Reparacion_model extends CI_Model
 {
 
@@ -53,9 +46,9 @@ class Reparacion_model extends CI_Model
         return $id;
     }
 
-    public function asociaImagenes($id, $imagenes){
+    public function asociaImagen($id, $imagen){
         $reparacion = $this->getReparacionById($id);
-        $reparacion->xownImagenReparacionList = $imagenes;
+        $reparacion->xownImagenReparacionList[] = $imagen;
         R::store($reparacion);
         R::close();
     }

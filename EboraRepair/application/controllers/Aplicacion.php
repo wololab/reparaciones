@@ -1,7 +1,9 @@
 <?php
 class Aplicacion extends CI_Controller {
     public function formularioReparacion(){
-//        echo date('Y/m/d');
-        enmarcar($this, 'reparacion/formulario');
+        enmarcar($this, 'reparacion/formularioDatos');
+    }
+    public function formularioImagenes(){
+        enmarcar($this, 'reparacion/formularioImagenes');
     }
 }

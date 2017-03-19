@@ -1,13 +1,7 @@
 <div class="container">
-    <form action="<?=base_url()?>reparacion/reparacion/datosReparacion" method="post"> <!-- Datos reparacion debe guardar en sesion los datos y desplegar para las imagenes DEL-->
+    <form id="formulario" action="<?=base_url()?>reparacion/reparacion/datosReparacion" method="post"> <!-- Datos reparacion debe guardar en sesion los datos y desplegar para las imagenes DEL-->
         <br/>
         <i>Los campos marcados con * son obligatorios</i>
-    <div id="formularioReparacion">
-        <ul>
-            <li><a href="#datos">Datos de la Reparación</a></li>
-            <li><a href="#imagenes">Imágenes</a></li>
-        </ul>
-        <div id="datos">
             <fieldset>
                 <label for="fecha">Fecha *</label>
                 <input type="date" id="fecha" name="fecha" value="<?=date('Y-m-d')?>" class="form-control" required="required"/>
@@ -79,104 +73,15 @@
                 <input type="number" class="form-control" id="telefonoPer" name="telefonoPer" required="required"/>
             </fieldset>
             <br/>
-
-        </div>
-        <div id="imagenes">
-            <fieldset>
-                <legend>Matrícula *</legend>
-                <label class="btn btn-default btn-file">
-                    Browse <input type="file" style="display: none;" onchange="readURL(this, 1)" required="required"/>
-                </label>
-                <br/>
-                <br/>
-                <img id="prev1" src="#" alt="Matrícula" class="previewForm" />
-            </fieldset>
-            <fieldset>
-                <legend>Detalle de Luna *</legend>
-                <label class="btn btn-default btn-file">
-                    Browse <input type="file" style="display: none;" onchange="readURL(this, 2)" required="required"/>
-                </label>
-                <br/>
-                <br/>
-                <img id="prev2" src="#" alt="Detalle de Luna" class="previewForm" />
-            </fieldset>
-            <fieldset>
-                <legend>Permiso de Circulación *</legend>
-                <label class="btn btn-default btn-file">
-                    Browse <input type="file" style="display: none;" onchange="readURL(this, 3)" required="required"/>
-                </label>
-                <br/>
-                <br/>
-                <img id="prev3" src="#" alt="Permiso de Circulación" class="previewForm" />
-            </fieldset>
-            <fieldset>
-                <legend>Póliza</legend>
-                <label class="btn btn-default btn-file">
-                    Browse <input type="file" style="display: none;" onchange="readURL(this, 4)"/>
-                </label>
-                <br/>
-                <br/>
-                <img id="prev4" src="#" alt="Póliza" class="previewForm" />
-            </fieldset>
-            <fieldset>
-                <legend>Recibo</legend>
-                <label class="btn btn-default btn-file">
-                    Browse <input type="file" style="display: none;" onchange="readURL(this, 5)"/>
-                </label>
-                <br/>
-                <br/>
-                <img id="prev5" src="#" alt="Recibo" class="previewForm" />
-            </fieldset>
-            <fieldset>
-                <legend>Máquina de Reparar o Luna Quitada *</legend>
-                <label class="btn btn-default btn-file">
-                    Browse <input type="file" style="display: none;" onchange="readURL(this, 6)" required="required"/>
-                </label>
-                <br/>
-                <br/>
-                <img id="prev6" src="#" alt="Máquina de Reparar o Luna Quitada" class="previewForm" />
-            </fieldset>
-            <fieldset>
-                <legend>Orden de Trabajo *</legend>
-                <label class="btn btn-default btn-file">
-                    Browse <input type="file" style="display: none;" onchange="readURL(this, 7)" required="required"/>
-                </label>
-                <br/>
-                <br/>
-                <img id="prev7" src="#" alt="Orden de Trabajo" class="previewForm" />
-            </fieldset>
-            <fieldset>
-                <legend>Impacto Reparado o Luna Montada</legend>
-                <label class="btn btn-default btn-file">
-                    Browse <input type="file" style="display: none;" onchange="readURL(this, 8)"/>
-                </label>
-                <br/>
-                <br/>
-                <img id="prev8" src="#" alt="Impacto Reparado o Luna Montada" class="previewForm" />
-            </fieldset>
-            <input type="button" value="Comprobar Campos" onclick="comprobarCampos();" class="btn btn-primary"/>
-        </div>
-    </div>
-
+        <input type="button" value="Siguiente" class="btn btn-primary" onclick="comprobarCampos();"/>
     </form>
     <p id="status"></p>
 </div>
 <script>
-    $('#formularioReparacion').tabs();
     function comprobarCampos(){
-        // TODO todas las expresiones regulares de los campos
+        /* TODO expresiones regulares */
+        document.getElementById('formulario').submit();
     }
-    function readURL(input, id) {
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
 
-            reader.onload = function (e) {
-                $('#prev' + id).attr('src', e.target.result);
-                $('#prev' + id).toggle();
-            }
-
-            reader.readAsDataURL(input.files[0]);
-        }
-    }
 
 </script>
