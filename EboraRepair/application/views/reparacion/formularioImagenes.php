@@ -4,7 +4,7 @@
         <fieldset>
             <legend>Matrícula *</legend>
             <label class="btn btn-default btn-file">
-                Browse <input name="matricula" type="file" style="display: none;" onchange="readURL(this, 1)" required="required"/>
+                Browse <input name="matricula" type="file" accept="image/png, image/jpeg" style="display: none;" onchange="readURL(this, 1)" required="required"/>
             </label>
             <br/>
             <br/>
@@ -13,7 +13,7 @@
         <fieldset>
             <legend>Detalle de Luna *</legend>
             <label class="btn btn-default btn-file">
-                Browse <input name="detalleLuna" type="file" style="display: none;" onchange="readURL(this, 2)" required="required"/>
+                Browse <input name="detalleLuna" type="file" accept="image/png, image/jpeg" style="display: none;" onchange="readURL(this, 2)" required="required"/>
             </label>
             <br/>
             <br/>
@@ -22,7 +22,7 @@
         <fieldset>
             <legend>Permiso de Circulación *</legend>
             <label class="btn btn-default btn-file">
-                Browse <input name="permiso" type="file" style="display: none;" onchange="readURL(this, 3)" required="required"/>
+                Browse <input name="permiso" type="file" accept="image/png, image/jpeg" style="display: none;" onchange="readURL(this, 3)" required="required"/>
             </label>
             <br/>
             <br/>
@@ -31,7 +31,7 @@
         <fieldset>
             <legend>Póliza</legend>
             <label class="btn btn-default btn-file">
-                Browse <input name="poliza" type="file" style="display: none;" onchange="readURL(this, 4)"/>
+                Browse <input name="poliza" type="file" accept="image/png, image/jpeg" style="display: none;" onchange="readURL(this, 4)"/>
             </label>
             <br/>
             <br/>
@@ -40,7 +40,7 @@
         <fieldset>
             <legend>Recibo</legend>
             <label class="btn btn-default btn-file">
-                Browse <input name="recibo" type="file" style="display: none;" onchange="readURL(this, 5)"/>
+                Browse <input name="recibo" type="file" accept="image/png, image/jpeg" style="display: none;" onchange="readURL(this, 5)"/>
             </label>
             <br/>
             <br/>
@@ -49,7 +49,7 @@
         <fieldset>
             <legend>Máquina de Reparar o Luna Quitada *</legend>
             <label class="btn btn-default btn-file">
-                Browse <input name="maquinaOLunaQuitada" type="file" style="display: none;" onchange="readURL(this, 6)" required="required"/>
+                Browse <input name="maquinaOLunaQuitada" type="file" accept="image/png, image/jpeg" style="display: none;" onchange="readURL(this, 6)" required="required"/>
             </label>
             <br/>
             <br/>
@@ -58,7 +58,7 @@
         <fieldset>
             <legend>Orden de Trabajo *</legend>
             <label class="btn btn-default btn-file">
-                Browse <input name="ordenTrabajo" type="file" style="display: none;" onchange="readURL(this, 7)" required="required"/>
+                Browse <input name="ordenTrabajo" type="file" accept="image/png, image/jpeg" style="display: none;" onchange="readURL(this, 7)" required="required"/>
             </label>
             <br/>
             <br/>
@@ -67,7 +67,7 @@
         <fieldset>
             <legend>Impacto Reparado o Luna Montada</legend>
             <label class="btn btn-default btn-file">
-                Browse <input name="impactoOLunaMontada" type="file" style="display: none;" onchange="readURL(this, 8)"/>
+                Browse <input name="impactoOLunaMontada" type="file" accept="image/png, image/jpeg" style="display: none;" onchange="readURL(this, 8)"/>
             </label>
             <br/>
             <br/>
@@ -100,7 +100,7 @@
         $('#imagenes').append('<label for="titulo' + index + '">Título de Imagen</label>');
         $('#imagenes').append('<input type="text" class="form-control" id="titulo' + index + '" name="titulo' + index + '" required="required"/>');
         $('#imagenes').append('<label class="btn btn-default btn-file">' +
-        'Browse <input name="img' + index + '" type="file" style="display: none;" onchange="readURL(this, ' + (8+index) + ')" required="required"/>' +
+        'Browse <input name="img' + index + '" type="file" accept="image/png, image/jpeg" style="display: none;" onchange="readURL(this, ' + (8+index) + ')" required="required"/>' +
             '</label><br/> <br/>' +
             '<img id="prev' + (8+index) + '" src="#" alt="Imagen Extra" class="previewForm"/> <br/>');
         index += 1;

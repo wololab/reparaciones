@@ -80,7 +80,7 @@ class Reparacion extends CI_Controller
         $this->load->model('Reparacion/Reparacion_model');
         $idReparacion = $this->Reparacion_model->saveReparacion($reparacion); /* TODO comprobar si esto guarda a través del formulario */
         $this->guardaImagenes($_FILES, $idReparacion, $_POST);
-        echo $idReparacion;
+        echo 'Guardada reparación de: ' . $_SESSION['marca'] . ' ' . $_SESSION['modelo'];
     }
 
     public function guardaImagenes($FILES, $idReparacion, $POST)

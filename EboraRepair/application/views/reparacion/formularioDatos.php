@@ -1,5 +1,5 @@
 <div class="container">
-    <form id="formulario" action="<?=base_url()?>reparacion/reparacion/datosReparacion" method="post"> <!-- Datos reparacion debe guardar en sesion los datos y desplegar para las imagenes DEL-->
+    <form id="formulario" onsubmit="return comprobarCampos();" action="<?=base_url()?>reparacion/reparacion/datosReparacion" method="post">
         <br/>
         <i>Los campos marcados con * son obligatorios</i>
             <fieldset>
@@ -73,14 +73,14 @@
                 <input type="number" class="form-control" id="telefonoPer" name="telefonoPer" required="required"/>
             </fieldset>
             <br/>
-        <input type="button" value="Siguiente" class="btn btn-primary" onclick="comprobarCampos();"/>
+        <input type="submit" value="Siguiente" class="btn btn-primary"/>
     </form>
     <p id="status"></p>
 </div>
 <script>
     function comprobarCampos(){
         /* TODO expresiones regulares */
-        document.getElementById('formulario').submit();
+        return true;
     }
 
 
