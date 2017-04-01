@@ -120,7 +120,11 @@ class Reparacion extends CI_Controller
             if (!file_exists('./assets/img/reparaciones/' . $idReparacion . '/')) {
                 mkdir('./assets/img/reparaciones/' . $idReparacion . '/');
             }
-            move_uploaded_file($imagen ['tmp_name'], $rutaDestino);
+//            move_uploaded_file($imagen ['tmp_name'], $rutaDestino);
+            $source_img = $imagen [ 'tmp_name'];
+            $destination_img = $rutaDestino;
+
+            $this->compress($source_img, $destination_img, 10); // TODO elegir calidad
 
         } else {
             $rutaDestino = './assets/img/reparaciones/noimage.png';
@@ -131,6 +135,24 @@ class Reparacion extends CI_Controller
         $imagenBean = $this->ImagenReparacion_model->getImagenReparacionById($idImagenBean);
         $this->load->model('Reparacion_model');
         $this->Reparacion_model->asociaImagen($idReparacion, $imagenBean); /* TODO comprobar vale con .assets si luego pongo baseurl en html o hay que ponerlo aqui */
+    }
+
+    public function compress($source, $destination, $quality) {
+
+        $info = getimagesize($source);
+
+        if ($info['mime'] == 'image/jpeg')
+            $image = imagecreatefromjpeg($source);
+
+        elseif ($info['mime'] == 'image/gif')
+            $image = imagecreatefromgif($source);
+
+        elseif ($info['mime'] == 'image/png')
+            $image = imagecreatefrompng($source);
+
+        imagejpeg($image, $destination, $quality);
+
+        return $destination;
     }
 
     public function guardaTaller()

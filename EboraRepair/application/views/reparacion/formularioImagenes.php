@@ -1,11 +1,11 @@
 <div class="container">
-    <form action="<?= base_url() ?>reparacion/reparacion/registrarReparacion" method="post" enctype="multipart/form-data">
+    <form action="<?= base_url() ?>reparacion/registrarReparacion" method="post" enctype="multipart/form-data">
         <br/>
         <fieldset>
             <legend>Matrícula *</legend>
-            <label class="btn btn-default btn-file">
-                Browse <input name="matricula" type="file" accept="image/png, image/jpeg" style="display: none;" onchange="readURL(this, 1)" required="required"/>
-            </label>
+            <!--<label class="btn btn-default btn-file">-->
+                <!--Browse--> <input class="btn btn-file" name="matricula" type="file" accept="image/png, image/jpeg"  onchange="readURL(this, 1)" required="required"/>
+            <!--</label>-->
             <br/>
             <br/>
             <img id="prev1" src="#" alt="Matrícula" class="previewForm"/>
@@ -94,8 +94,10 @@
             }
 
             reader.readAsDataURL(input.files[0]);
+
         }
     }
+
     function aniadirImagenExtra(){
         $('#imagenes').append('<label for="titulo' + index + '">Título de Imagen</label>');
         $('#imagenes').append('<input type="text" class="form-control" id="titulo' + index + '" name="titulo' + index + '" required="required"/>');
@@ -106,4 +108,5 @@
         index += 1;
 
     }
+
 </script>

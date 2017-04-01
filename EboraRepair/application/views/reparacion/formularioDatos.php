@@ -1,5 +1,5 @@
 <div class="container">
-    <form id="formulario" onsubmit="return comprobarCampos();" action="<?=base_url()?>reparacion/reparacion/datosReparacion" method="post">
+    <form id="formulario" onsubmit="return comprobarCampos();" action="<?=base_url()?>reparacion/datosReparacion" method="post">
         <br/>
         <i>Los campos marcados con * son obligatorios</i>
             <fieldset>
@@ -36,13 +36,13 @@
                 <label for="direccion">Dirección *</label>
                 <input type="text" class="form-control" id="direccion" name="direccion" required="required"/>
                 <label for="cp">Código Postal *</label>
-                <input type="text" class="form-control" id="cp" name="cp" required="required"/>
+                <input type="number" min="10000" max="99999" class="form-control" id="cp" name="cp" required="required"/>
                 <label for="poblacion">Población *</label>
                 <input type="text" class="form-control" id="poblacion" name="poblacion" required="required"/>
                 <label for="telefono">Teléfono *</label>
-                <input type="number" class="form-control" id="telefono" name="telefono" required="required"/>
-                <label for="email">E-mail *</label>
-                <input type="text" class="form-control" id="email" name="email" required="required"/>
+                <input type="number" class="form-control" min="600000000" max="900000000" id="telefono" name="telefono" required="required"/>
+                <label for="mail">E-mail *</label>
+                <input type="text" class="form-control" id="mail" name="email" required="required"/>
                 <label for="dni">DNI *</label>
                 <input type="text" class="form-control" id="dni" name="dni" required="required"/>
             </fieldset>
@@ -70,18 +70,38 @@
                 <label for="dniPer">DNI *</label>
                 <input type="text" class="form-control" id="dniPer" name="dniPer" required="required"/>
                 <label for="telefonoPer">Teléfono *</label>
-                <input type="number" class="form-control" id="telefonoPer" name="telefonoPer" required="required"/>
+                <input type="number" min="600000000" max="900000000" class="form-control" id="telefonoPer" name="telefonoPer" required="required"/>
             </fieldset>
             <br/>
         <input type="submit" value="Siguiente" class="btn btn-primary"/>
     </form>
-    <p id="status"></p>
+    <p id="status" style="color: red;"></p>
 </div>
 <script>
     function comprobarCampos(){
         /* TODO expresiones regulares */
+        var bien = true;
+        var status = $('#status');
+        status.text("");
+        if(!/^\d{2}:\d{2}$/.test($('#hora').val())){
+            bien = false;
+            status.html(status.html() + 'Formato de hora incorrecto <br/>');
+        }
+        if(!/^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/.test($('#mail').val())){
+            bien = false;
+            status.html(status.html() + 'Formato de email incorrecto <br/>');
+        }
+        if(!/^\d{8}[a-zA-Z]$/.test($('#dni').val())) {
+            bien = false;
+            status.html(status.html() + 'Formato de DNI Cliente incorrecto <br/>');
+        }
+        if(!/^\d{8}[a-zA-Z]$/.test($('#dniPer').val())) {
+            bien = false;
+            status.html(status.html() + 'Formato de DNI de Persona que acude al taller incorrecto <br/>');
+        }
+
+        console.log(bien);
         return true;
     }
-
 
 </script>
