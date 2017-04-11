@@ -31,5 +31,19 @@ class Administracion extends CI_Controller {
         }
     }
 
+
+    public function filtros(){
+        enmarcar($this, 'administracion/filtros');
+    }
+
+    public function xmlReparaciones(){
+        $this->load->model('Reparacion/Reparacion_model');
+        $reparaciones = $this->Reparacion_model->getAllReparacions();
+        $datos['reparaciones'] = $reparaciones;
+//Supuestamente hay que hacer esto
+//        $response = $this->load->view('radius/radius_corporate_graph',$data,TRUE);
+//        echo $response;
+
+        $this->load->view('administracion/xmlReparaciones', $datos);
+    }
 }
-?>

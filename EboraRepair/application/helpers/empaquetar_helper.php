@@ -79,6 +79,7 @@ function empaquetaReparacion($nombreOrdenante, $primerApOrdenante, $segundoApOrd
         'empleado' => $empleado,
         'cliente' => $cliente,
         'coche' => $coche,
+        'facturada' => false,
     ];
 
     return $reparacion;
