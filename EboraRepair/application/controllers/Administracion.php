@@ -40,10 +40,6 @@ class Administracion extends CI_Controller {
         $this->load->model('Reparacion/Reparacion_model');
         $reparaciones = $this->Reparacion_model->getAllReparacions();
         $datos['reparaciones'] = $reparaciones;
-//Supuestamente hay que hacer esto
-//        $response = $this->load->view('radius/radius_corporate_graph',$data,TRUE);
-//        echo $response;
-
-        $this->load->view('administracion/xmlReparaciones', $datos);
+        echo $this->load->view('administracion/xmlReparaciones', $datos, true);
     }
 }

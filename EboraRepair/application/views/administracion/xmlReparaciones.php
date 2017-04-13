@@ -1,9 +1,15 @@
+<?php
+header('Content-type: text/xml');
+?>
+<?php
+echo '<?xml version="1.0" encoding="UTF-8"?>';
+?>
 <reparaciones>
 <?php foreach ($reparaciones as $reparacion) : ?>
     <reparacion>
         <nombreOrdenante><?=$reparacion->nombre_ordenante?></nombreOrdenante>
         <primerApellidoOrdenante><?=$reparacion->primer_apellido_ordenante?></primerApellidoOrdenante>
-        <segundoApellidoOrdenante><<?=$reparacion->segundo_apellido_ordenante?>/segundoApellidoOrdenante>
+        <segundoApellidoOrdenante><?=$reparacion->segundo_apellido_ordenante?></segundoApellidoOrdenante>
         <dniOrdenante><?=$reparacion->dni_ordenante?></dniOrdenante>
         <telefonoOrdenante><?=$reparacion->telefono_ordenante?></telefonoOrdenante>
         <dia><?=$reparacion->dia?></dia>
@@ -40,7 +46,7 @@
             <nombreReparador><?=$reparacion->empleado->nombre?></nombreReparador>
             <primerApellidoReparador><?=$reparacion->empleado->primer_apellido?></primerApellidoReparador>
             <segundoApellidoReparador><?=$reparacion->empleado->segundo_apellido?></segundoApellidoReparador>
-            <dni_codTaller><?=$reparacion->empleado->dni?></dni_codTaller>
+            <dni_o_codTaller><?=$reparacion->empleado->dni_o_cod_taller?></dni_o_codTaller>
             <telefonoReparador><?=$reparacion->empleado->telefono?></telefonoReparador>
             <emailReparador><?=$reparacion->empleado->email?></emailReparador>
             <activo><?=$reparacion->empleado->activo?></activo>

@@ -100,6 +100,10 @@
 <!-- Jquery UI js -->
 <script src="<?=base_url()?>assets/JqueryUI/jquery-ui.min.js"></script>
 
+<!-- Data Tables -->
+<script src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/responsive/2.1.1/js/dataTables.responsive.min.js"></script>
+
 <!-- FlexSlider JavaScript
 ================================================== -->
 <script src="<?=base_url()?>assets/js/jquery.flexslider.js"></script>
@@ -134,3 +138,4 @@
         });
     });
 </script>
+

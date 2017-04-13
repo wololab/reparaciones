@@ -78,7 +78,7 @@ class Reparacion extends CI_Controller
             $_SESSION['numeroSiniestro'], $_SESSION['numeroPoliza'], $_SESSION['diaSiniestro'], $_SESSION['mesSiniestro'],
             $_SESSION['anioSiniestro'], $taller, $empleado, $cliente, $coche);
         $this->load->model('Reparacion/Reparacion_model');
-        $idReparacion = $this->Reparacion_model->saveReparacion($reparacion); /* TODO comprobar si esto guarda a través del formulario */
+        $idReparacion = $this->Reparacion_model->saveReparacion($reparacion);
         $this->guardaImagenes($_FILES, $idReparacion, $_POST);
         echo 'Guardada reparación de: ' . $_SESSION['marca'] . ' ' . $_SESSION['modelo'];
     }
@@ -181,6 +181,31 @@ class Reparacion extends CI_Controller
         $id = $this->Coche_model->saveCoche($coche);;
         $coche = $this->Coche_model->getCocheById($id);
         return $coche;
+    }
+
+
+    public function unoDeCada()
+    { /* DEL */
+        $this->load->helper('empaquetar');
+        $taller = $this->guardaTaller(); /* DEL  */
+        $cliente = $this->guardaCliente('Pepe', 'Gómez', 'Pérez',
+            'Calle Falsa 123', 28029, 'Madrid', 676778887, 'pepe@gomez.es',
+            '51456743C');
+        $coche = $this->guardaCoche('es1239', '36453523', 'honda',
+            'focus123', 2000, 'Rojo', 123);
+        $_SESSION['idReparador'] = 1; // DEL Esto será la que esté en usuActivo
+        $idEmpleado = $_SESSION['idReparador'];
+        $this->load->model('Empleado/Empleado_model');
+        $empleado = $this->Empleado_model->getEmpleadoById($idEmpleado);
+        $reparacion = empaquetaReparacion('Juan', 'Pérez', 'Sánchez',
+            '51667766R', 676554456, 1, 2,
+            2016, '15:34', 'Rotura', 'aseguradora2',
+            '1234hhh', '1234ggr', 12, 6,
+            2016, $taller, $empleado, $cliente, $coche);
+        $this->load->model('Reparacion/Reparacion_model');
+        $idReparacion = $this->Reparacion_model->saveReparacion($reparacion);
+        //$this->guardaImagenes($_FILES, $idReparacion, $_POST);
+        echo 'Guardada reparación';
     }
 
 }

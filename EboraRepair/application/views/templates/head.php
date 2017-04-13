@@ -39,5 +39,9 @@
 	<link rel="apple-touch-icon" sizes="114x114" href="<?=base_url()?>assets/ico/apple-touch-icon-114x114.png">
 	<link rel="apple-touch-icon" sizes="144x144" href="<?=base_url()?>assets/ico/apple-touch-icon-144x144.png">
 
+    <!-- DataTables -->
+    <link href="https://cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css" rel="stylesheet"/>
+    <link href="https://cdn.datatables.net/responsive/2.1.1/css/responsive.dataTables.min.css" rel="stylesheet"/>
+
 </head>
 <body onload="<?= (isset($body['onload']) ? $body['onload'] : '') ?>">
