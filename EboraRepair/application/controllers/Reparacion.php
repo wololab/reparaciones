@@ -116,18 +116,18 @@ class Reparacion extends CI_Controller
         if($imagen != '') {
             $tmp = explode('.', $imagen ['name']);
             $nombreNuevo = $nombre . '.' . end($tmp);
-            $rutaDestino = './assets/img/reparaciones/' . $idReparacion . '/' . $nombreNuevo;
+            $rutaDestino = base_url() . 'assets/img/reparaciones/' . $idReparacion . '/' . $nombreNuevo;
             if (!file_exists('./assets/img/reparaciones/' . $idReparacion . '/')) {
                 mkdir('./assets/img/reparaciones/' . $idReparacion . '/');
             }
 //            move_uploaded_file($imagen ['tmp_name'], $rutaDestino);
             $source_img = $imagen [ 'tmp_name'];
-            $destination_img = $rutaDestino;
+            $destination_img = './assets/img/reparaciones/' . $idReparacion . '/' . $nombreNuevo;;
 
             $this->compress($source_img, $destination_img, 10); // TODO elegir calidad
 
         } else {
-            $rutaDestino = './assets/img/reparaciones/noimage.png';
+            $rutaDestino = base_url() . 'assets/img/reparaciones/noimage.png';
         }
         $imagen = empaquetaImagenReparacion($rutaDestino, $nombre, $titulo);
         $this->load->model('ImagenReparacion/ImagenReparacion_model');
@@ -159,7 +159,7 @@ class Reparacion extends CI_Controller
     {
 
         $this->load->model('Taller/Taller_model');
-        $taller = empaquetaTaller('pepe', 'madrid', 676885576, 'calle pepe', 'hhdhd'); //TODO via post, TODO preguntar como recoger esto
+        $taller = empaquetaTaller('taller2', 'madrid', 676885576, 'calle pepe', 'hhdhd'); //TODO via post, TODO preguntar como recoger esto
         $id = $this->Taller_model->saveTaller($taller);
         $taller = $this->Taller_model->getTallerById($id);
         return $taller;
@@ -183,23 +183,36 @@ class Reparacion extends CI_Controller
         return $coche;
     }
 
+    public function facturar()
+    {
+        $id = $_POST['id'];
+        $this->load->model('Reparacion/Reparacion_model');
+        $this->Reparacion_model->facturar($id);
+    }
+
+    public function desfacturar()
+    {
+        $id = $_POST['id'];
+        $this->load->model('Reparacion/Reparacion_model');
+        $this->Reparacion_model->desfacturar($id);
+    }
 
     public function unoDeCada()
     { /* DEL */
         $this->load->helper('empaquetar');
         $taller = $this->guardaTaller(); /* DEL  */
-        $cliente = $this->guardaCliente('Pepe', 'Gómez', 'Pérez',
-            'Calle Falsa 123', 28029, 'Madrid', 676778887, 'pepe@gomez.es',
+        $cliente = $this->guardaCliente('Andrés', 'Gómez', 'Pérez',
+            'Calle Falsa 123', 28029, 'Barcelona', 676778887, 'pepe@gomez.es',
             '51456743C');
         $coche = $this->guardaCoche('es1239', '36453523', 'honda',
-            'focus123', 2000, 'Rojo', 123);
-        $_SESSION['idReparador'] = 1; // DEL Esto será la que esté en usuActivo
+            'modelo3', 2000, 'Rojo', 123);
+        $_SESSION['idReparador'] = 2; // DEL Esto será la que esté en usuActivo
         $idEmpleado = $_SESSION['idReparador'];
         $this->load->model('Empleado/Empleado_model');
         $empleado = $this->Empleado_model->getEmpleadoById($idEmpleado);
         $reparacion = empaquetaReparacion('Juan', 'Pérez', 'Sánchez',
-            '51667766R', 676554456, 1, 2,
-            2016, '15:34', 'Rotura', 'aseguradora2',
+            '51667766R', 676554456, 5, 3,
+            2017, '15:34', 'Rotura', 'aseguradora3',
             '1234hhh', '1234ggr', 12, 6,
             2016, $taller, $empleado, $cliente, $coche);
         $this->load->model('Reparacion/Reparacion_model');

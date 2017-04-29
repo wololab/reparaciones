@@ -7,6 +7,7 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
 <reparaciones>
 <?php foreach ($reparaciones as $reparacion) : ?>
     <reparacion>
+        <id><?=$reparacion->id?></id>
         <nombreOrdenante><?=$reparacion->nombre_ordenante?></nombreOrdenante>
         <primerApellidoOrdenante><?=$reparacion->primer_apellido_ordenante?></primerApellidoOrdenante>
         <segundoApellidoOrdenante><?=$reparacion->segundo_apellido_ordenante?></segundoApellidoOrdenante>
@@ -23,10 +24,9 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
         <diaSiniestro><?=$reparacion->dia_siniestro?></diaSiniestro>
         <mesSiniestro><?=$reparacion->mes_siniestro?></mesSiniestro>
         <anyoSiniestro><?=$reparacion->anyo_siniestro?></anyoSiniestro>
+        <facturada><?=$reparacion->facturada?></facturada>
         <cliente>
-            <nombre><?=$reparacion->cliente->nombre?></nombre>
-            <primerApellido><?=$reparacion->cliente->primer_apellido?></primerApellido>
-            <segundoApellido><?=$reparacion->cliente->segundo_apellido?></segundoApellido>
+            <nombre><?=$reparacion->cliente->nombre?> <?=$reparacion->cliente->primer_apellido?> <?=$reparacion->cliente->segundo_apellido?></nombre>
             <direccion><?=$reparacion->cliente->direccion?></direccion>
             <cp><?=$reparacion->cliente->cp?></cp>
             <poblacion><?=$reparacion->cliente->poblacion?></poblacion>
@@ -38,14 +38,12 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
             <bastidor><?=$reparacion->coche->bastidor?></bastidor>
             <marca><?=$reparacion->coche->marca?></marca>
             <modelo><?=$reparacion->coche->modelo?></modelo>
-            <anyo><?=$reparacion->coche->anyo?></anyo>
+            <anyoCoche><?=$reparacion->coche->anyo?></anyoCoche>
             <color><?=$reparacion->coche->color?></color>
             <kms><?=$reparacion->coche->kms?></kms>
         </coche>
         <empleado>
-            <nombreReparador><?=$reparacion->empleado->nombre?></nombreReparador>
-            <primerApellidoReparador><?=$reparacion->empleado->primer_apellido?></primerApellidoReparador>
-            <segundoApellidoReparador><?=$reparacion->empleado->segundo_apellido?></segundoApellidoReparador>
+            <nombreReparador><?=$reparacion->empleado->nombre?> <?=$reparacion->empleado->primer_apellido?> <?=$reparacion->empleado->segundo_apellido?></nombreReparador>
             <dni_o_codTaller><?=$reparacion->empleado->dni_o_cod_taller?></dni_o_codTaller>
             <telefonoReparador><?=$reparacion->empleado->telefono?></telefonoReparador>
             <emailReparador><?=$reparacion->empleado->email?></emailReparador>

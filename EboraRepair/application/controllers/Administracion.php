@@ -42,4 +42,12 @@ class Administracion extends CI_Controller {
         $datos['reparaciones'] = $reparaciones;
         echo $this->load->view('administracion/xmlReparaciones', $datos, true);
     }
+
+    public function detalleReparacion(){
+        $id = $_GET['id'];
+        $this->load->model('Reparacion/Reparacion_model');
+        $reparacion = $this->Reparacion_model->getReparacionById($id);
+        $data['reparacion'] = $reparacion;
+        enmarcar($this, 'administracion/detalleReparacion', $data);
+    }
 }

@@ -101,7 +101,7 @@
 <script src="<?=base_url()?>assets/JqueryUI/jquery-ui.min.js"></script>
 
 <!-- Data Tables -->
-<script src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
+<script src="<?=base_url()?>assets/js/jquery.datatables.min.js"></script>
 
 <!-- FlexSlider JavaScript
 ================================================== -->

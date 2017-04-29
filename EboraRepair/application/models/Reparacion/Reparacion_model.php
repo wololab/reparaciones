@@ -72,4 +72,18 @@ class Reparacion_model extends CI_Model
         R::close();
         return $bean;
     }
+
+    public function facturar($id){
+        $bean = R::load('reparacion', $id);
+        $bean -> facturada = true;
+        R::store($bean);
+        R::close();
+    }
+
+    public function desfacturar($id){
+        $bean = R::load('reparacion', $id);
+        $bean -> facturada = false;
+        R::store($bean);
+        R::close();
+    }
 }
