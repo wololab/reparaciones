@@ -11,7 +11,8 @@ function empaquetaEmpleado($nick, $password, $nombre, $primerAp, $segundoAp, $dn
         'telefono' => $tfno,
         'email' => $email,
         'rol' => $rol,
-        'activo' => true
+        'activo' => true,
+        'primeraVez' => true
     ];
     return $empleado;
 }
@@ -21,14 +22,15 @@ function empaquetaTallerEmpleado($nick, $password, $codTaller, $tfno, $email, $r
     $empleado = [
         'nick' => $nick,
         'password' => $password,
-        'nombre' => null, // TODO nombre del taller = null?
+        'nombre' => null,
         'primer_apellido' => null,
         'segundo_apellido' => null,
         'dni_o_cod_taller' => $codTaller,
         'telefono' => $tfno,
         'email' => $email,
         'rol' => $rol,
-        'activo' => true
+        'activo' => true,
+        'primeraVez' => true
     ];
     return $empleado;
 }
@@ -55,7 +57,7 @@ function empaquetaTaller($nombre, $ciudad, $tfno, $direccion, $cif)
 function empaquetaReparacion($nombreOrdenante, $primerApOrdenante, $segundoApOrdenante, $dniOrdenante,
                                     $tfnoOrdenante, $dia, $mes, $anyo, $hora, $tipo, $aseguradora,
                                     $numeroSiniestro, $numeroPoliza, $diaSiniestro, $mesSiniestro,
-                                    $anyoSiniestro, $taller, $empleado, $cliente, $coche)
+                                    $anyoSiniestro, $empleado, $cliente, $coche)
 {
 
     $reparacion = [
@@ -75,7 +77,7 @@ function empaquetaReparacion($nombreOrdenante, $primerApOrdenante, $segundoApOrd
         'dia_siniestro' => $diaSiniestro,
         'mes_siniestro' => $mesSiniestro,
         'anyo_siniestro' => $anyoSiniestro,
-        'taller' => $taller,
+        'taller' => null,
         'empleado' => $empleado,
         'cliente' => $cliente,
         'coche' => $coche,

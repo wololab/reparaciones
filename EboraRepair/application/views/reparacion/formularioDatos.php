@@ -57,7 +57,7 @@
                 <label for="aseguradora">Aseguradora *</label>
                 <input type="text" class="form-control" id="aseguradora" name="aseguradora" required="required"/>
                 <label for="tipo">Tipo de Siniestro *</label>
-                <input type="text" class="form-control" id="tipo" name="tipo" required="required"/> <!-- TODO select? -->
+                <input type="text" class="form-control" id="tipo" name="tipo" required="required"/>
             </fieldset>
             <fieldset>
                 <legend>Persona que acude con el vehículo al taller</legend>
@@ -79,7 +79,6 @@
 </div>
 <script>
     function comprobarCampos(){
-        /* TODO expresiones regulares */
         var bien = true;
         var status = $('#status');
         status.text("");

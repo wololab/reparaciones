@@ -1,6 +1,15 @@
 <?php
 class Administracion extends CI_Controller {
 
+    public function __construct()
+    {
+        parent::__construct();
+        session_start();
+        if(!isset($_SESSION['usuActivo']) || $_SESSION['usuActivo'] == null || $_SESSION['usuActivo']->rol != 'administrador'){
+            redirect(base_url());
+        }
+    }
+
     private function autenticado() {
         $autenticado = false;
         if (session_status () == PHP_SESSION_NONE) {
@@ -49,5 +58,19 @@ class Administracion extends CI_Controller {
         $reparacion = $this->Reparacion_model->getReparacionById($id);
         $data['reparacion'] = $reparacion;
         enmarcar($this, 'administracion/detalleReparacion', $data);
+    }
+
+    public function listaEmpleados(){
+        if(isset($_SESSION['pwd'])){
+            $data['passTemporal'] = $_SESSION['pwd'];
+            unset($_SESSION['pwd']);
+            $data['nuevoEmple'] = $_SESSION['nuevoEmple'];
+            unset($_SESSION['nuevoEmple']);
+        }
+
+        $this->load->model('Empleado/Empleado_model');
+        $empleados = $this->Empleado_model->getAllEmpleados();
+        $data['empleados'] = $empleados;
+        enmarcar($this, 'administracion/listaDeEmpleados', $data);
     }
 }

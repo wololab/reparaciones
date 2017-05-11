@@ -17,7 +17,7 @@ class Usuario extends CI_Controller{
         enmarcar($this, 'usuario/registro');
     }
 
-    public function registroPost(){
+   /* public function registroPost(){
         error_reporting(0);
 
         $nombre = $_POST['name'];
@@ -27,16 +27,13 @@ class Usuario extends CI_Controller{
         $email = $_POST['email'];
         $telefono = $_POST['phone'];
 
-        /*TODO aqui se envia el usuario a la base de datos y se crea, despues se despliega una vista
-        dependiendo de si la creación ha sido un exito*/
-
         if ($creado) {
             enmarcar($this, 'usuario/registroOK');
         } else {
             enmarcar($this, 'usuario/registroError');
         }
     }
-
+*/
     public function login() {
         enmarcar($this, 'usuario/login');
     }
@@ -46,36 +43,53 @@ class Usuario extends CI_Controller{
     }
 
     public function loginPost() {
-        $name = $_POST ['user'];
-        $pwd = $_POST ['pwd'];
-
-        //$this->load->model('usuario_model');
-        //$ok = $this->usuario_model->verify ($name, $pwd);
-        $ok=true;//DEL
-
-        if ($ok) {
-            session_start ();
-            /*$usuario = $this->usuario_model->getUsuarioByName($name);
-            $_SESSION ['usuario'] ['id'] = $usuario->id;
-            $_SESSION ['usuario'] ['nombre'] = $usuario->nombre;
-            $_SESSION ['usuario'] ['perfil'] = $usuario->perfil;TODO*/
-
-            $_SESSION ['idUsuario'] = '01'; //DEL
-            $_SESSION ['nombreUsuario'] = 'Administrador'; //DEL
-            $_SESSION ['perfilUsuario'] = 'admin'; //DEL
-
-            header('Location:'.base_url());
+        $user = $_POST['user'];
+        $pwd = $_POST['pwd'];
+        $pwdSHA256 = hash( 'sha256', $pwd );
+        $this->load->model('Empleado/Empleado_model');
+        $usuario = $this->Empleado_model->getEmpleados([
+            'nick' => $user,
+            'password' => $pwdSHA256
+        ]);
+        if($usuario != []){
+            if(end($usuario)->activo) {
+                session_start();
+                $_SESSION['usuActivo'] = end($usuario);
+                if(end($usuario)->primeraVez){
+                    enmarcar($this, 'usuario/primeraVez');
+                } else {
+                    enmarcar($this, 'usuario/loginOK');
+                }
+            } else {
+                enmarcar($this, 'usuario/loginInactivo');
+            }
         } else {
-            enmarcar($this,'usuario/loginError');
+            enmarcar($this, 'usuario/loginError');
         }
+
     }
 
     public function logout() {
         if (session_status () == PHP_SESSION_NONE) {
             session_start ();
         }
-        session_destroy ();
-        header('Location:'.base_url());
+        $_SESSION['usuActivo'] = null;
+        redirect(base_url());
+    }
+
+    public function cambiaPass(){
+        session_start();
+        if(isset($_SESSION['usuActivo']) && $_SESSION['usuActivo'] != null) {
+            $pwd = $_POST['pwd'];
+            $pwdHash = hash('sha256', $pwd);
+            $_SESSION['usuActivo']->password = $pwdHash;
+            $_SESSION['usuActivo']->primeraVez = false;
+            $this->load->model('Empleado/Empleado_model');
+            $this->Empleado_model->updateEmpleado($_SESSION['usuActivo']);
+            redirect(base_url());
+        } else {
+            redirect(base_url());
+        }
     }
 
 }

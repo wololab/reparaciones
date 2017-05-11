@@ -16,7 +16,6 @@ class Coche_model extends CI_Model {
      * @return Array with the specific Coche's beans
      */
     public function getCoches($coche){
-        /* TODO complete */
         $filter = '';
         $arrData = [];
         $keys = array_keys($coche);
@@ -39,7 +38,6 @@ class Coche_model extends CI_Model {
      * @param $coche It must be packed like $coche = ['nameOfBBDDField' => 'data'] example $person = ['name' => 'john', 'age' => 16]
      */
     public function saveCoche($coche){
-        /* TODO complete */
         $bean = R::dispense('coche');
         foreach ($coche as $k => $data){
             $bean -> $k = $data;

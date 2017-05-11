@@ -16,7 +16,6 @@ class Cliente_model extends CI_Model {
      * @return Array with the specific Cliente's beans
      */
     public function getClientes($cliente){
-        /* TODO complete */
         $filter = '';
         $arrData = [];
         $keys = array_keys($cliente);
@@ -39,7 +38,6 @@ class Cliente_model extends CI_Model {
      * @param $cliente It must be packed like $cliente = ['nameOfBBDDField' => 'data'] example $person = ['name' => 'john', 'age' => 16]
      */
     public function saveCliente($cliente){
-        /* TODO complete */
         $bean = R::dispense('cliente');
         foreach ($cliente as $k => $data){
             $bean -> $k = $data;

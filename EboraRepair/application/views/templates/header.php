@@ -3,7 +3,7 @@
     <div class="sticky-toolbar">
         <ul>
             <li id="support"><a title="Contacte con nosotros" href="#" ><i class="fa fa-question"></i></a></li>
-            <?php if (isset($header['usuario']['nombre'])): ?>
+            <?php if (isset($_SESSION['usuActivo']) && $_SESSION['usuActivo'] != null): ?>
                 <li id="accountlogin2"><a title="Cerrar sesión" href="<?=base_url()?>usuario/logout" ><i class="fa fa-unlock"></i></a></li>
             <?php else: ?>
                 <li id="accountlogin"><a title="Acceso usuarios" href="#" ><i class="fa fa-lock"></i></a></li>
@@ -18,20 +18,19 @@
         </ul>
     </div>
     <!--/ popup-->
-
     <div class="loginpopup">
         <h3><i class="fa fa-key"></i> Acceso usuarios</h3>
-        <form id="loginform" method="post" name="loginform" action="<?=base_url()?>usuario/login2">
+        <form id="loginform" method="post" name="loginform" action="<?=base_url()?>usuario/loginPost">
             <div class="form-group">
                 <div class="input-group">
                     <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                    <input type="text" class="form-control" placeholder="Nombre de usuario" required="required"/>
+                    <input type="text" name="user" class="form-control" placeholder="Nombre de usuario" required="required"/>
                 </div>
             </div>
             <div class="form-group">
                 <div class="input-group">
                     <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                    <input type="password" class="form-control" placeholder="Contraseña" required="required"/>
+                    <input type="password" name="pwd" class="form-control" placeholder="Contraseña" required="required"/>
                 </div>
             </div>
             <!--
@@ -120,8 +119,8 @@
                     </ul><!-- end flags -->
                     <ul class="topmenu pull-right">
 
-                        <?php if (isset($header['usuario']['nombre'])): ?>
-                            <li><a href="<?=base_url()?>aplicacion/formularioReparacion"><?= $header['usuario']['nombre'] ?></a></li>
+                        <?php if (isset($_SESSION['usuActivo']) && $_SESSION['usuActivo'] != null): ?>
+                            <li><a href="<?=base_url()?>aplicacion/formularioReparacion"><?= $_SESSION['usuActivo']->nombre ?></a></li>
                         <?php else: ?>
                             <li><a href="<?=base_url()?>usuario/login"><i class="fa fa-lock"></i> Acceso Usuarios</a></li>
                         <?php endif; ?>

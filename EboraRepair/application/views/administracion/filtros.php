@@ -25,7 +25,7 @@
         <input id="filtrar" disabled="disabled" type="submit" class="btn btn-primary" value="Filtrar"/>
     </form>
     <div id="resultado">
-        <table id="tablaFiltrada" class="" cellspacing="0" width="100%"> <!-- DEL cambiar por el xml-->
+        <table id="tablaFiltrada" class="" cellspacing="0" width="100%">
             <thead>
             <tr>
                 <th>Día</th>
@@ -127,7 +127,7 @@
             var texto = $('#texto').val();
             var filtro = $('#filtro').val();
             var facturada = document.getElementById('facturada').checked;
-            var fechaInicio = $('#fechaInicio').val(); //TODO formatear fecha
+            var fechaInicio = $('#fechaInicio').val();
             var fechaSplit = fechaInicio.split('-');
             anyoInicio = fechaSplit[0];
             mesInicio = fechaSplit[1];
@@ -146,7 +146,7 @@
                     encaja = isFacturada(reparacion, facturada);
                 }
                 if (encaja) {
-                    encaja = campoCoincide(reparacion, texto, filtro); //TODO descomentar y comprobar si funciona
+                    encaja = campoCoincide(reparacion, texto, filtro);
                 }
                 if (encaja) {
                    insertarEnTabla(reparacion);
@@ -258,7 +258,7 @@
             return true;
         }
         else {
-            var campo = reparacion.getElementsByTagName(filtro)[0].textContent.toString().toLowerCase(); //FIXME
+            var campo = reparacion.getElementsByTagName(filtro)[0].textContent.toString().toLowerCase();
             if (texto == '' || campo.search(texto.toLowerCase()) != -1 ) {
                 return true;
             }

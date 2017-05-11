@@ -12,7 +12,6 @@ class Reparacion_model extends CI_Model
      */
     public function getReparacions($reparacion)
     {
-        /* TODO complete */
         $filter = '';
         $arrData = [];
         $keys = array_keys($reparacion);
@@ -36,7 +35,6 @@ class Reparacion_model extends CI_Model
      */
     public function saveReparacion($reparacion)
     {
-        /* TODO complete */
         $bean = R::dispense('reparacion');
         foreach ($reparacion as $k => $data) {
             $bean->$k = $data;
@@ -84,6 +82,11 @@ class Reparacion_model extends CI_Model
         $bean = R::load('reparacion', $id);
         $bean -> facturada = false;
         R::store($bean);
+        R::close();
+    }
+
+    public function updateReparacion($reparacion){
+        R::store($reparacion);
         R::close();
     }
 }

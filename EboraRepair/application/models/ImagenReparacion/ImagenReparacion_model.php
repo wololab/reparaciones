@@ -16,7 +16,6 @@ class ImagenReparacion_model extends CI_Model {
      * @return Array with the specific ImagenReparacion's beans
      */
     public function getImagenReparacions($imagenReparacion){
-        /* TODO complete */
         $filter = '';
         $arrData = [];
         $keys = array_keys($imagenReparacion);
@@ -39,7 +38,6 @@ class ImagenReparacion_model extends CI_Model {
      * @param $imagenReparacion It must be packed like $imagenReparacion = ['nameOfBBDDField' => 'data'] example $person = ['name' => 'john', 'age' => 16]
      */
     public function saveImagenReparacion($imagenReparacion){
-        /* TODO complete */
         $bean = R::dispense('imagenreparacion');
         foreach ($imagenReparacion as $k => $data){
             $bean -> $k = $data;
@@ -66,5 +64,10 @@ class ImagenReparacion_model extends CI_Model {
         $bean = R::load('imagenreparacion', $id);
         R::close();
         return $bean;
+    }
+
+    public function updateImagenReparacion($bean){
+        R::store($bean);
+        R::close();
     }
 }

@@ -17,7 +17,6 @@ class Empleado_model extends CI_Model {
      * @return Array with the specific Empleado's beans
      */
     public function getEmpleados($empleado){
-        /* TODO complete */
         $filter = '';
         $arrData = [];
         $keys = array_keys($empleado);
@@ -40,7 +39,6 @@ class Empleado_model extends CI_Model {
      * @param $empleado It must be packed like $empleado = ['nameOfBBDDField' => 'data'] example $person = ['name' => 'john', 'age' => 16]
      */
     public function saveEmpleado($empleado){
-        /* TODO complete */
         $bean = R::dispense('empleado');
         foreach ($empleado as $k => $data){
             $bean -> $k = $data;
@@ -67,5 +65,10 @@ class Empleado_model extends CI_Model {
         $bean = R::load('empleado', $id);
         R::close();
         return $bean;
+    }
+
+    public function updateEmpleado($empleado){
+        R::store($empleado);
+        R::close();
     }
 }

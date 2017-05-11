@@ -16,7 +16,6 @@ class Taller_model extends CI_Model {
      * @return Array with the specific Taller's beans
      */
     public function getTallers($taller){
-        /* TODO complete */
         $filter = '';
         $arrData = [];
         $keys = array_keys($taller);
@@ -39,7 +38,6 @@ class Taller_model extends CI_Model {
      * @param $taller It must be packed like $taller = ['nameOfBBDDField' => 'data'] example $person = ['name' => 'john', 'age' => 16]
      */
     public function saveTaller($taller){
-        /* TODO complete */
         $bean = R::dispense('taller');
         foreach ($taller as $k => $data){
             $bean -> $k = $data;

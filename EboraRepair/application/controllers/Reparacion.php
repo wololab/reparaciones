@@ -1,10 +1,17 @@
 <?php
 class Reparacion extends CI_Controller
 {
+    public function __construct()
+    {
+        parent::__construct();
+        session_start();
+        if(!isset($_SESSION['usuActivo']) || $_SESSION['usuActivo'] == null){
+            redirect(base_url());
+        }
+    }
 
     public function datosReparacion()
     {
-        session_start();
 
 
 
@@ -23,7 +30,7 @@ class Reparacion extends CI_Controller
         $_SESSION['matricula'] = $_POST['matricula'];
         $_SESSION['bastidor'] = $_POST['bastidor'];
         $_SESSION['kms'] = $_POST['kms'];
-        $_SESSION['color'] = isset($_POST['color']) ? $_POST['color'] : 'Color no definido'; /* TODO que habrá por defecto? */
+        $_SESSION['color'] = isset($_POST['color']) ? $_POST['color'] : 'Color no definido';
 
         /* Datos Asegurado */
         $_SESSION['nombre'] = $_POST['nombre'];
@@ -60,15 +67,12 @@ class Reparacion extends CI_Controller
 
     public function registrarReparacion()
     {
-        session_start();
         $this->load->helper('empaquetar');
-        $taller = $this->guardaTaller(); /* DEL  */
         $cliente = $this->guardaCliente($_SESSION['nombre'], $_SESSION['ape1'], $_SESSION['ape2'],
             $_SESSION['direccion'], $_SESSION['cp'], $_SESSION['poblacion'], $_SESSION['telefono'], $_SESSION['email'],
             $_SESSION['dni']);
         $coche = $this->guardaCoche($_SESSION['matricula'], $_SESSION['bastidor'], $_SESSION['marca'],
             $_SESSION['modelo'], $_SESSION['anioCoche'], $_SESSION['color'], $_SESSION['kms']);
-        $_SESSION['idReparador'] = 1; // DEL Esto será la que esté en usuActivo
         $idEmpleado = $_SESSION['idReparador'];
         $this->load->model('Empleado/Empleado_model');
         $empleado = $this->Empleado_model->getEmpleadoById($idEmpleado);
@@ -76,7 +80,7 @@ class Reparacion extends CI_Controller
             $_SESSION['dniPersona'], $_SESSION['telefonoPersona'], $_SESSION['dia'], $_SESSION['mes'],
             $_SESSION['anio'], $_SESSION['hora'], $_SESSION['tipo'], $_SESSION['aseguradora'],
             $_SESSION['numeroSiniestro'], $_SESSION['numeroPoliza'], $_SESSION['diaSiniestro'], $_SESSION['mesSiniestro'],
-            $_SESSION['anioSiniestro'], $taller, $empleado, $cliente, $coche);
+            $_SESSION['anioSiniestro'], $empleado, $cliente, $coche);
         $this->load->model('Reparacion/Reparacion_model');
         $idReparacion = $this->Reparacion_model->saveReparacion($reparacion);
         $this->guardaImagenes($_FILES, $idReparacion, $_POST);
@@ -114,17 +118,7 @@ class Reparacion extends CI_Controller
     {
 
         if($imagen != '') {
-            $tmp = explode('.', $imagen ['name']);
-            $nombreNuevo = $nombre . '.' . end($tmp);
-            $rutaDestino = base_url() . 'assets/img/reparaciones/' . $idReparacion . '/' . $nombreNuevo;
-            if (!file_exists('./assets/img/reparaciones/' . $idReparacion . '/')) {
-                mkdir('./assets/img/reparaciones/' . $idReparacion . '/');
-            }
-//            move_uploaded_file($imagen ['tmp_name'], $rutaDestino);
-            $source_img = $imagen [ 'tmp_name'];
-            $destination_img = './assets/img/reparaciones/' . $idReparacion . '/' . $nombreNuevo;;
-
-            $this->compress($source_img, $destination_img, 10); // TODO elegir calidad
+            $rutaDestino = $this->subeImagen($imagen, $nombre, $idReparacion);
 
         } else {
             $rutaDestino = base_url() . 'assets/img/reparaciones/noimage.png';
@@ -134,7 +128,22 @@ class Reparacion extends CI_Controller
         $idImagenBean = $this->ImagenReparacion_model->saveImagenReparacion($imagen);
         $imagenBean = $this->ImagenReparacion_model->getImagenReparacionById($idImagenBean);
         $this->load->model('Reparacion_model');
-        $this->Reparacion_model->asociaImagen($idReparacion, $imagenBean); /* TODO comprobar vale con .assets si luego pongo baseurl en html o hay que ponerlo aqui */
+        $this->Reparacion_model->asociaImagen($idReparacion, $imagenBean);
+    }
+
+    public function subeImagen($imagen, $nombre, $idReparacion){
+        $tmp = explode('.', $imagen ['name']);
+        $nombreNuevo = $nombre . '.' . end($tmp);
+        $rutaDestino = base_url() . 'assets/img/reparaciones/' . $idReparacion . '/' . $nombreNuevo;
+        if (!file_exists('./assets/img/reparaciones/' . $idReparacion . '/')) {
+            mkdir('./assets/img/reparaciones/' . $idReparacion . '/');
+        }
+//            move_uploaded_file($imagen ['tmp_name'], $rutaDestino);
+        $source_img = $imagen [ 'tmp_name'];
+        $destination_img = './assets/img/reparaciones/' . $idReparacion . '/' . $nombreNuevo;;
+
+        $this->compress($source_img, $destination_img, 10); // se puede elegir calidad
+        return $rutaDestino;
     }
 
     public function compress($source, $destination, $quality) {
@@ -155,11 +164,10 @@ class Reparacion extends CI_Controller
         return $destination;
     }
 
-    public function guardaTaller()
+    public function guardaTaller($taller)
     {
 
         $this->load->model('Taller/Taller_model');
-        $taller = empaquetaTaller('taller2', 'madrid', 676885576, 'calle pepe', 'hhdhd'); //TODO via post, TODO preguntar como recoger esto
         $id = $this->Taller_model->saveTaller($taller);
         $taller = $this->Taller_model->getTallerById($id);
         return $taller;
@@ -185,40 +193,138 @@ class Reparacion extends CI_Controller
 
     public function facturar()
     {
-        $id = $_POST['id'];
-        $this->load->model('Reparacion/Reparacion_model');
-        $this->Reparacion_model->facturar($id);
+        if($_SESSION['usuActivo']->rol == 'administrador') {
+            $id = $_POST['id'];
+            $this->load->model('Reparacion/Reparacion_model');
+            $this->Reparacion_model->facturar($id);
+        } else {
+            redirect(base_url());
+        }
     }
 
     public function desfacturar()
     {
-        $id = $_POST['id'];
-        $this->load->model('Reparacion/Reparacion_model');
-        $this->Reparacion_model->desfacturar($id);
+        if($_SESSION['usuActivo']->rol == 'administrador') {
+            $id = $_POST['id'];
+            $this->load->model('Reparacion/Reparacion_model');
+            $this->Reparacion_model->desfacturar($id);
+        } else {
+            redirect(base_url());
+        }
     }
 
-    public function unoDeCada()
-    { /* DEL */
-        $this->load->helper('empaquetar');
-        $taller = $this->guardaTaller(); /* DEL  */
-        $cliente = $this->guardaCliente('Andrés', 'Gómez', 'Pérez',
-            'Calle Falsa 123', 28029, 'Barcelona', 676778887, 'pepe@gomez.es',
-            '51456743C');
-        $coche = $this->guardaCoche('es1239', '36453523', 'honda',
-            'modelo3', 2000, 'Rojo', 123);
-        $_SESSION['idReparador'] = 2; // DEL Esto será la que esté en usuActivo
-        $idEmpleado = $_SESSION['idReparador'];
-        $this->load->model('Empleado/Empleado_model');
-        $empleado = $this->Empleado_model->getEmpleadoById($idEmpleado);
-        $reparacion = empaquetaReparacion('Juan', 'Pérez', 'Sánchez',
-            '51667766R', 676554456, 5, 3,
-            2017, '15:34', 'Rotura', 'aseguradora3',
-            '1234hhh', '1234ggr', 12, 6,
-            2016, $taller, $empleado, $cliente, $coche);
-        $this->load->model('Reparacion/Reparacion_model');
-        $idReparacion = $this->Reparacion_model->saveReparacion($reparacion);
-        //$this->guardaImagenes($_FILES, $idReparacion, $_POST);
-        echo 'Guardada reparación';
+    public function aniadirImagen(){
+        if($_SESSION['usuActivo']->rol == 'administrador') {
+            $id = $_POST['idImagen'];
+            $imagen = $_FILES['imagen'];
+            $this->load->model('ImagenReparacion/ImagenReparacion_model');
+            $imagenB = $this->ImagenReparacion_model->getImagenReparacionById($id);
+            $rutaDestino = $this->subeImagen($imagen, $imagenB->alt, $imagenB->reparacion->id);
+            $imagenB->src = $rutaDestino;
+            $this->ImagenReparacion_model->updateImagenReparacion($imagenB);
+            redirect(base_url() . 'administracion/detalleReparacion?id=' . $imagenB->reparacion->id);
+        } else {
+            redirect(base_url());
+        }
+    }
+
+    public function enviarATaller(){
+        if($_SESSION['usuActivo']->rol == 'administrador') {
+            $id = $_POST['id'];
+            $ciudad = $_POST['ciudad'];
+            $nombre = $_POST['nombre'];
+            $telefono = $_POST['telefono'];
+            $direccion = $_POST['direccion'];
+            $cif = $_POST['cif'];
+            $this->load->helper('empaquetar');
+            $taller = empaquetaTaller($nombre, $ciudad, $telefono, $direccion, $cif);
+            $tallerB = $this->guardaTaller($taller);
+            $this->load->model('Reparacion/Reparacion_model');
+            $reparacion = $this->Reparacion_model->getReparacionById($id);
+            $reparacion->taller = $tallerB;
+            $this->Reparacion_model->updateReparacion($reparacion);
+            redirect(base_url() . 'administracion/detalleReparacion?id=' . $id);
+        } else {
+            redirect(base_url());
+        }
+    }
+
+    function descargarDatos(){
+        if($_SESSION['usuActivo']->rol == 'administrador') {
+            $id = $_GET['id'];
+
+            $zip = new ZipArchive();
+            $time = time();
+            $filename = './assets/temp/' . $time . '.zip';
+            //$filename = './assets/temp/prueba.zip';
+            $downloadFileName = date('d_m_Y') . '-' . $id;
+            if ($zip->open($filename, ZipArchive::CREATE) !== TRUE) {
+                exit("cannot open <$filename>\n");
+            }
+
+            $this->load->model('Reparacion/Reparacion_model');
+            $reparacion = $this->Reparacion_model->getReparacionById($id);
+
+            $datos = '';
+            $datos .= 'Datos de la reparación descargados el ' . date('d/m/Y') . ' a las ' . date('H:i:s') . ':' . PHP_EOL;
+            $datos .= PHP_EOL;
+            $datos .= PHP_EOL;
+            foreach ($reparacion as $k => $dato) {
+                if ($dato == '') $dato = 'no asignado';
+                $datos .= $k . ' - ' . $dato . PHP_EOL;
+            }
+            $datos .= PHP_EOL;
+            $datos .= 'Datos de coche con id: ' . $reparacion->coche_id . ':' . PHP_EOL;
+            foreach ($reparacion->coche as $k => $dato) {
+                if ($dato == '') $dato = 'no asignado';
+                $datos .= $k . ' - ' . $dato . PHP_EOL;
+            }
+            $datos .= PHP_EOL;
+            $datos .= 'Datos de cliente con id: ' . $reparacion->cliente_id . ':' . PHP_EOL;
+            foreach ($reparacion->cliente as $k => $dato) {
+                if ($dato == '') $dato = 'no asignado';
+                $datos .= $k . ' - ' . $dato . PHP_EOL;
+            }
+            $datos .= PHP_EOL;
+            $datos .= 'Datos de reparador con id: ' . $reparacion->empleado_id . ':' . PHP_EOL;
+            foreach ($reparacion->empleado as $k => $dato) {
+                if ($dato == '') $dato = 'no asignado';
+                $datos .= $k . ' - ' . $dato . PHP_EOL;
+            }
+            if ($reparacion->taller != null) {
+                $datos .= PHP_EOL;
+                $datos .= 'Datos de taller externo con id: ' . $reparacion->taller_id . ':' . PHP_EOL;
+                foreach ($reparacion->taller as $k => $dato) {
+                    if ($dato == '') $dato = 'no asignado';
+                    $datos .= $k . ' - ' . $dato . PHP_EOL;
+                }
+            }
+
+            $zip->addFromString($downloadFileName . '/datos.txt', $datos);
+            //echo $datos;
+            //$zip->addFromString("testfilephp.txt" . time(), "#1 Esto es una cadena de prueba añadida como  testfilephp.txt.\n");
+            //$zip->addFromString("testfilephp2.txt" . time(), "#2 Esto es una cadena de prueba añadida como testfilephp2.txt.\n");
+            $path = './assets/img/reparaciones/' . $id . '/';
+            $dir = new DirectoryIterator($path);
+            foreach ($dir as $fileinfo) {
+                if (!$fileinfo->isDot()) {
+                    $nombre = $fileinfo->getFilename();
+                    $zip->addFile($path . $nombre, $downloadFileName . '/' . $nombre);
+                }
+            }
+
+            $zip->close();
+
+            header('Cache-Control: public');
+            header('Content-Description: File Transfer');
+            header('Content-Disposition: attachment; filename=' . $downloadFileName . '.zip');
+            header("Content-Transfer-Encoding: binary");
+            readfile($filename);
+
+            unlink($filename);
+        } else {
+            redirect(base_url());
+        }
     }
 
 }
