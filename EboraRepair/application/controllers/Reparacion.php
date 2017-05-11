@@ -251,6 +251,10 @@ class Reparacion extends CI_Controller
 
     function descargarDatos(){
         if($_SESSION['usuActivo']->rol == 'administrador') {
+            if (!file_exists('./assets/temp/')) {
+                mkdir('./assets/temp/');
+            }
+
             $id = $_GET['id'];
 
             $zip = new ZipArchive();
