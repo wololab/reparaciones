@@ -10,6 +10,7 @@
                             <div class="flexslider">
                                 <ul class="slides">
                                     <li>
+                                        <!--
                                         <div class="desc">
                                             <div class="ps-desc">
                                                 <h3>Oferta 01</h3>
@@ -23,9 +24,11 @@
                                                 <a href="#" class="status">Oferta</a>
                                             </div>
                                         </div>
+                                        -->
                                         <img src="<?=base_url()?>assets/img/slider/coche01.jpg" alt="Slider01">
                                     </li>
                                     <li>
+                                        <!--
                                         <div class="desc">
                                             <div class="ps-desc">
                                                 <h3>Oferta 02</h3>
@@ -39,9 +42,11 @@
                                                 <a href="#" class="status">Oferta</a>
                                             </div>
                                         </div>
+                                        -->
                                         <img src="<?=base_url()?>assets/img/slider/coche02.jpg" alt="Slider02">
                                     </li>
                                     <li>
+                                        <!--
                                         <div class="desc">
                                             <div class="ps-desc">
                                                 <h3>Oferta 03</h3>
@@ -55,6 +60,7 @@
                                                 <a href="#" class="status">Oferta</a>
                                             </div>
                                         </div>
+                                        -->
                                         <img src="<?=base_url()?>assets/img/slider/coche03.jpg" alt="Slider03">
                                     </li>
                                 </ul><!-- end slides -->
@@ -70,23 +76,21 @@
 <section class="generalwrapper dm-shadow clearfix">
     <div class="container">
         <div class="row text-center">
-            <h3 class="big_title">Ebora Repair <small>Diferenciadores 3-4 </small></h3>
+            <h3 class="big_title">Ebora Repair</h3>
             <div class="services_section clearfix">
                 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                     <div class="servicebox first">
                         <div class="service-icon">
                             <div class="dm-icon-effect-1" data-effect="slide-bottom">
-                                <a href="#dif01Modal" data-toggle="modal"><i class="hovicon effect-1 sub-a fa fa-list fa-2x"></i></a>
+                                <a href="#dif01Modal" data-toggle="modal"><i class="hovicon effect-1 sub-a fa fa-home fa-2x"></i></a>
                             </div>
                         </div>
                         <div class="servicetitle">
-                            <h3>Reparaciones</h3>
+                            <h3>Cómodo</h3>
                         </div>
                         <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam quis arcu ac nisi scelerisque commodo.
-                        </p>
-                        <p>
-                            In leo lorem, pharetra id ligula id, ultrices vestibulum erat. In a placerat dui, pretium faucibus urna.
+                            Nuestras unidades móviles se trasladan a tu domicilio, lugar de trabajo o
+                            a dónde nos indiques para repararte el parabrisas.
                         </p>
                     </div>
                 </div>
@@ -95,17 +99,14 @@
                     <div class="servicebox">
                         <div class="service-icon">
                             <div class="dm-icon-effect-1" data-effect="slide-bottom">
-                                <a href="#dif02Modal" data-toggle="modal"><i class="hovicon effect-1 sub-a fa fa-eye-slash fa-2x"></i></a>
+                                <a href="#dif02Modal" data-toggle="modal"><i class="hovicon effect-1 sub-a fa fa-clock-o fa-2x"></i></a>
                             </div>
                         </div>
                         <div class="servicetitle">
-                            <h3>Rapidez</h3>
+                            <h3>Rápido</h3>
                         </div>
                         <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam quis arcu ac nisi scelerisque commodo.
-                        </p>
-                        <p>
-                            In leo lorem, pharetra id ligula id, ultrices vestibulum erat. In a placerat dui, pretium faucibus urna.
+                            En 20-30 minutos tu parabrisas quedará reparado recuperando su resistencia original.
                         </p>
                     </div>
                 </div>
@@ -114,17 +115,14 @@
                     <div class="servicebox">
                         <div class="service-icon">
                             <div class="dm-icon-effect-1" data-effect="slide-bottom">
-                                <a href="#dif03Modal" data-toggle="modal"><i class="hovicon effect-1 sub-a fa fa-check-square-o fa-2x"></i></a>
+                                <a href="#dif03Modal" data-toggle="modal"><i class="hovicon effect-1 sub-a fa fa-cloud fa-2x"></i></a>
                             </div>
                         </div>
                         <div class="servicetitle">
-                            <h3>Facilidades</h3>
+                            <h3>Ecológico</h3>
                         </div>
                         <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam quis arcu ac nisi scelerisque commodo.
-                        </p>
-                        <p>
-                            In leo lorem, pharetra id ligula id, ultrices vestibulum erat. In a placerat dui, pretium faucibus urna.
+                            Colaboramos con la protección del medio ambiente al no generar residuos y utilizar resinas biodegradables.
                         </p>
                     </div>
                 </div>
@@ -133,17 +131,15 @@
                     <div class="servicebox last">
                         <div class="service-icon">
                             <div class="dm-icon-effect-1" data-effect="slide-bottom">
-                                <a href="#dif04Modal" data-toggle="modal"><i class="hovicon effect-1 sub-a fa fa-home fa-2x"></i></a>
+                                <a href="#dif04Modal" data-toggle="modal"><i class="hovicon effect-1 sub-a fa fa-money fa-2x"></i></a>
                             </div>
                         </div>
                         <div class="servicetitle">
-                            <h3>Precisión</h3>
+                            <h3>Económico</h3>
                         </div>
                         <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam quis arcu ac nisi scelerisque commodo.
-                        </p>
-                        <p>
-                            In leo lorem, pharetra id ligula id, ultrices vestibulum erat. In a placerat dui, pretium faucibus urna.
+                            El servicio de reparación no tiene ningún coste para el asegurado y además,
+                            en la mayoría de los casos, no afecta a la bonificación de la prima por no siniestralidad.
                         </p>
                     </div>
                 </div>
@@ -161,9 +157,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h3 class="big_title">Diferenciador 01
-                    <small>Explicación detallada.</small>
-                </h3>
+                <h3 class="big_title">Cómodo</h3>
             </div>
             <div class="modal-body clearfix">
                 <div class="text-left">
@@ -195,19 +189,19 @@
 
                     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                         <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam quis arcu ac nisi scelerisque commodo.
-                            In leo lorem, pharetra id ligula id, ultrices vestibulum erat. In a placerat dui, pretium faucibus urna.
-                            Phasellus ut fringilla sem.
+                            Nuestras unidades móviles se trasladan a tu domicilio, lugar de trabajo o a donde nos
+                            indiques para repararte el parabrisas.
                         </p>
                         <p>
-                            Donec efficitur lectus odio, id mollis eros tempus a. Ut aliquet purus quis purus semper maximus.
-                            Aenean bibendum, erat ac blandit porttitor, tortor orci condimentum eros, eu ullamcorper mi neque quis est.
-                            Aliquam erat volutpat. Vivamus bibendum efficitur leo.
+                            Para tu comodidad y evitarte desplazamientos y pérdidas de tiempo, nosotros acudimos a
+                            reparar tu parabrisas donde mejor te venga. Al estar concertados con la mayoría de las
+                            compañías de seguros también nos ocupamos de la tramitación del siniestro y resto de
+                            gestiones administrativas.
                         </p>
                         <p>
-                            Vivamus ipsum velit, interdum vitae nibh eget, auctor cursus nisl. Lorem ipsum dolor sit amet,
-                            consectetur adipiscing elit. In mauris ligula, finibus in faucibus sed, bibendum eget lectus.
-                            Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+                            Centrados en la seguridad, la fiabilidad, el buen servicio y la máxima calidad como
+                            empresa de alta tecnología, no solo nos centramos en productos y servicios innovadores,
+                            trabajamos con un único objetivo: la satisfacción de nuestros clientes cuando recurren a nosotros.
                         </p>
                     </div>
                 </div>
@@ -221,9 +215,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h3 class="big_title">Diferenciador 02
-                    <small>Explicación detallada.</small>
-                </h3>
+                <h3 class="big_title">Rápido</h3>
             </div>
             <div class="modal-body clearfix">
                 <div class="text-left">
@@ -255,19 +247,23 @@
 
                     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                         <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam quis arcu ac nisi scelerisque commodo.
-                            In leo lorem, pharetra id ligula id, ultrices vestibulum erat. In a placerat dui, pretium faucibus urna.
-                            Phasellus ut fringilla sem.
+                            En 20-30 minutos tu parabrisas quedará reparado recuperando su resistencia original.
                         </p>
                         <p>
-                            Donec efficitur lectus odio, id mollis eros tempus a. Ut aliquet purus quis purus semper maximus.
-                            Aenean bibendum, erat ac blandit porttitor, tortor orci condimentum eros, eu ullamcorper mi neque quis est.
-                            Aliquam erat volutpat. Vivamus bibendum efficitur leo.
+                            Un parabrisas agrietado debilita el chasis y puede modificar la dinámica del vehículo.
+                            La reparación de lunas solo lleva 20-30 minutos; es una forma rápida y sencilla de volver
+                            a conducir con seguridad.
                         </p>
                         <p>
-                            Vivamus ipsum velit, interdum vitae nibh eget, auctor cursus nisl. Lorem ipsum dolor sit amet,
-                            consectetur adipiscing elit. In mauris ligula, finibus in faucibus sed, bibendum eget lectus.
-                            Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+                            Un pequeño impacto en el parabrisas no sólo debilita la estructura del vehículo,
+                            sino que puede ser el punto de partida de una grieta que acabe afectando a todo el cristal.
+                        </p>
+                        <p>
+                            En general, la mayoría de los impactos en el parabrisas pueden repararse siempre y
+                            cuando el daño no tenga un diámetro superior al de una moneda de 2 euros y, además, se
+                            encuentre fuera del campo de visión del conductor y no presente roturas múltiples con
+                            cráteres contiguos a distancia inferior a 10 mm, o roturas que hayan afectado a
+                            la capa inferior y superior del cristal.
                         </p>
                     </div>
                 </div>
@@ -281,9 +277,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h3 class="big_title">Diferenciador 03
-                    <small>Explicación detallada.</small>
-                </h3>
+                <h3 class="big_title">Ecológico</h3>
             </div>
             <div class="modal-body clearfix">
                 <div class="text-left">
@@ -315,19 +309,15 @@
 
                     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                         <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam quis arcu ac nisi scelerisque commodo.
-                            In leo lorem, pharetra id ligula id, ultrices vestibulum erat. In a placerat dui, pretium faucibus urna.
-                            Phasellus ut fringilla sem.
+                            Colaboramos con la protección del medio ambiente al no generar residuos, utilizar resinas
+                            biodegradables y evitar una futura sustitución que requiere un tratamiento especial de reciclado.
                         </p>
                         <p>
-                            Donec efficitur lectus odio, id mollis eros tempus a. Ut aliquet purus quis purus semper maximus.
-                            Aenean bibendum, erat ac blandit porttitor, tortor orci condimentum eros, eu ullamcorper mi neque quis est.
-                            Aliquam erat volutpat. Vivamus bibendum efficitur leo.
-                        </p>
-                        <p>
-                            Vivamus ipsum velit, interdum vitae nibh eget, auctor cursus nisl. Lorem ipsum dolor sit amet,
-                            consectetur adipiscing elit. In mauris ligula, finibus in faucibus sed, bibendum eget lectus.
-                            Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+                            El proceso de reparación del parabrisas se inicia con la protección de los elementos
+                            del vehículo y con la limpieza del área dañada. A continuación, y mediante una herramienta
+                            específicamente diseñada, se hace el vacío en la zona del impacto y se le añade una resina
+                            epoxi de relleno. Para secar la resina se aplica una luz ultravioleta durante 3 minutos y
+                            posteriormente se retira la resina sobrante hasta dejar la superficie del parabrisas lisa.
                         </p>
                     </div>
                 </div>
@@ -341,9 +331,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h3 class="big_title">Diferenciador 04
-                    <small>Explicación detallada.</small>
-                </h3>
+                <h3 class="big_title">Económico</h3>
             </div>
             <div class="modal-body clearfix">
                 <div class="text-left">
@@ -375,19 +363,21 @@
 
                     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                         <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam quis arcu ac nisi scelerisque commodo.
-                            In leo lorem, pharetra id ligula id, ultrices vestibulum erat. In a placerat dui, pretium faucibus urna.
-                            Phasellus ut fringilla sem.
+                            El servicio de reparación no tiene ningún coste para el asegurado y además, en la mayoría
+                            de los casos, no afecta a la bonificación de la prima por no siniestralidad.
                         </p>
                         <p>
-                            Donec efficitur lectus odio, id mollis eros tempus a. Ut aliquet purus quis purus semper maximus.
-                            Aenean bibendum, erat ac blandit porttitor, tortor orci condimentum eros, eu ullamcorper mi neque quis est.
-                            Aliquam erat volutpat. Vivamus bibendum efficitur leo.
+                            Reparar el parabrisas, en lugar de sustituirlo, supone un ahorro sustancial para el
+                            cliente, ya no únicamente económico sino también en referencia a otros conceptos
+                            como tiempos totales.
+                            Actualmente la tendencia a reparar los parabrisas está en aumento, siempre y cuando
+                            los impactos cumplan con las especificaciones para poder ser reparados.
                         </p>
                         <p>
-                            Vivamus ipsum velit, interdum vitae nibh eget, auctor cursus nisl. Lorem ipsum dolor sit amet,
-                            consectetur adipiscing elit. In mauris ligula, finibus in faucibus sed, bibendum eget lectus.
-                            Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+                            Para el cliente, bien sea un particular como la compañía de seguros, el coste de reparar
+                            representa una quinta parte del coste de sustitución. Esta sustancial diferencia,
+                            supone que muchas compañías no penalicen a los asegurados si se realiza la reparación en
+                            vez de la sustitución.
                         </p>
                     </div>
                 </div>
@@ -403,7 +393,7 @@
             <div class="container">
                 <div class="row">
                     <div class="text-center clearfix">
-                        <h3 class="big_title">Más cosas buenas <small>Ebora Repair y sus cualidades más importantes. </small></h3>
+                        <h3 class="big_title">Ebora Repair</h3>
                     </div><!-- text-center -->
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                         <div class="boxes testimonial_widget text-right first" data-effect="slide-left">
@@ -412,10 +402,9 @@
                                      src="<?=base_url()?>assets/img/cualidades/cualidades01.jpg">
                             </div>
                             <div class="testimonial_desc">
-                                <h3 class="title">TRABAJAMOS CON LOS MEJORES</h3>
+                                <h3 class="title">CERCANÍA</h3>
                                 <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam quis arcu ac nisi scelerisque commodo.
-                                    In leo lorem, pharetra id ligula id, ultrices vestibulum erat. In a placerat dui, pretium faucibus urna.
+                                    Ofrecemos cercanía, trato personalizado y de calidad para cada cliente.
                                 </p>
                             </div>
                         </div>
@@ -427,10 +416,9 @@
                                      src="<?=base_url()?>assets/img/cualidades/cualidades01.jpg">
                             </div>
                             <div class="testimonial_desc">
-                                <h3 class="title">MÁS DE 100 EMPLEADOS</h3>
+                                <h3 class="title">CALIDAD</h3>
                                 <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam quis arcu ac nisi scelerisque commodo.
-                                    In leo lorem, pharetra id ligula id, ultrices vestibulum erat. In a placerat dui, pretium faucibus urna.
+                                    Nuestro objetivo: la completa satisfacción del cliente.
                                 </p>
                             </div>
                         </div>
@@ -442,10 +430,10 @@
                                      src="<?=base_url()?>assets/img/cualidades/cualidades01.jpg">
                             </div>
                             <div class="testimonial_desc">
-                                <h3 class="title">GRAN CALIDAD</h3>
+                                <h3 class="title">EXPERTOS EN REPARACIÓN</h3>
                                 <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam quis arcu ac nisi scelerisque commodo.
-                                    In leo lorem, pharetra id ligula id, ultrices vestibulum erat. In a placerat dui, pretium faucibus urna.
+                                    Contamos con una tecnología de vanguardia y profesionales en la reparación
+                                    para ofrecerte el mejor servicio.
                                 </p>
                             </div>
                         </div>
@@ -457,10 +445,9 @@
                                      src="<?=base_url()?>assets/img/cualidades/cualidades01.jpg">
                             </div>
                             <div class="testimonial_desc">
-                                <h3 class="title">SEGURIDAD</h3>
+                                <h3 class="title">GARANTÍA</h3>
                                 <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam quis arcu ac nisi scelerisque commodo.
-                                    In leo lorem, pharetra id ligula id, ultrices vestibulum erat. In a placerat dui, pretium faucibus urna.
+                                    Usamos productos ecológicos y de la mejor calidad para garantizarte el mejor resultado.
                                 </p>
                             </div>
                         </div>

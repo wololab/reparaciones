@@ -92,10 +92,6 @@
         </div><!-- End col-md-8 -->
 
         <div class="col-md-4">
-            <div id="map">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3057.9577692333073!2d-4.829812117606861!3d39.96469688594437!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd401bf5bf70c349%3A0xd00a04448ad5260!2sAv.+P%C3%ADo+XII%2C+20%2C+45600+Talavera+de+la+Reina%2C+Toledo!5e0!3m2!1ses!2ses!4v1489028525408" width="100%" height="250" frameborder="0" style="border:0" allowfullscreen></iframe>
-            </div>
-            <!-- end map-->
             <div class="box_style_1">
                 <h2 class="title">Contacto</h2>
                 <h5>Dirección</h5>
@@ -112,6 +108,10 @@
                 <p><a href="mailto:info@eborarepair.com">info@eborarepair.com</a></p>
                 <p><a href="mailto:eborarepair@hotmail.com">eborarepair@hotmail.com</a></p>
             </div>
+            <div id="map">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3057.9577692333073!2d-4.829812117606861!3d39.96469688594437!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd401bf5bf70c349%3A0xd00a04448ad5260!2sAv.+P%C3%ADo+XII%2C+20%2C+45600+Talavera+de+la+Reina%2C+Toledo!5e0!3m2!1ses!2ses!4v1489028525408" width="100%" height="250" frameborder="0" style="border:0" allowfullscreen></iframe>
+            </div>
+            <!-- end map-->
         </div><!-- End col-md-4 -->
     </div><!-- End row -->
 </div><!-- End Container -->
