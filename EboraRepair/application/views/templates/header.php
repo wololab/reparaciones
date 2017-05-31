@@ -139,7 +139,7 @@
                 <div class="logo-wrapper clearfix">
                     <div class="logo">
                         <a href="<?=base_url()?>" title="Inicio">
-                            <img src="<?=base_url()?>assets/img/logos/logo.png" alt="Estate">
+                            <img src="<?=base_url()?>assets/img/logos/logocontexto.jpg" alt="Estate">
                         </a>
                     </div><!-- /.site-name -->
                 </div><!-- /.logo-wrapper -->
@@ -170,4 +170,4 @@
                     -->
                 </div><!-- end social -->
             </div>
-        </div><!-- end row -->
+        </div> <!-- end row -->

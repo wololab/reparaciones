@@ -1,8 +1,7 @@
 <?php
-class Reparacion extends CI_Controller
-{
-    public function __construct()
-    {
+class Reparacion extends CI_Controller{
+
+    public function __construct(){
         parent::__construct();
         session_start();
         if(!isset($_SESSION['usuActivo']) || $_SESSION['usuActivo'] == null){
@@ -10,10 +9,7 @@ class Reparacion extends CI_Controller
         }
     }
 
-    public function datosReparacion()
-    {
-
-
+    public function datosReparacion(){
 
         /* Fecha y hora */
         $fecha = $_POST['fecha'];
@@ -65,8 +61,8 @@ class Reparacion extends CI_Controller
 
     }
 
-    public function registrarReparacion()
-    {
+    public function registrarReparacion(){
+
         $this->load->helper('empaquetar');
         $cliente = $this->guardaCliente($_SESSION['nombre'], $_SESSION['ape1'], $_SESSION['ape2'],
             $_SESSION['direccion'], $_SESSION['cp'], $_SESSION['poblacion'], $_SESSION['telefono'], $_SESSION['email'],
@@ -87,8 +83,8 @@ class Reparacion extends CI_Controller
         echo 'Guardada reparación de: ' . $_SESSION['marca'] . ' ' . $_SESSION['modelo'];
     }
 
-    public function guardaImagenes($FILES, $idReparacion, $POST)
-    {
+    public function guardaImagenes($FILES, $idReparacion, $POST){
+
         $this->load->model('ImagenReparacion/ImagenReparacion_model');
         $this->guardaImagen($FILES ['matricula'], 'Matrícula', 'matricula', $idReparacion);
         $this->guardaImagen($FILES ['detalleLuna'], 'Detalle de Luna', 'detalleLuna', $idReparacion);
@@ -114,8 +110,7 @@ class Reparacion extends CI_Controller
         }
     }
 
-    public function guardaImagen($imagen, $titulo, $nombre, $idReparacion)
-    {
+    public function guardaImagen($imagen, $titulo, $nombre, $idReparacion){
 
         if($imagen != '') {
             $rutaDestino = $this->subeImagen($imagen, $nombre, $idReparacion);
@@ -164,8 +159,7 @@ class Reparacion extends CI_Controller
         return $destination;
     }
 
-    public function guardaTaller($taller)
-    {
+    public function guardaTaller($taller){
 
         $this->load->model('Taller/Taller_model');
         $id = $this->Taller_model->saveTaller($taller);
@@ -173,8 +167,8 @@ class Reparacion extends CI_Controller
         return $taller;
     }
 
-    public function guardaCliente($nombre, $ape1, $ape2, $direccion, $cp, $poblacion, $telefono, $email, $dni)
-    {
+    public function guardaCliente($nombre, $ape1, $ape2, $direccion, $cp, $poblacion, $telefono, $email, $dni){
+
         $this->load->model('Cliente/Cliente_model');
         $cliente = empaquetaCliente($nombre, $ape1, $ape2, $direccion, $cp, $poblacion, $telefono, $email, $dni);
         $id = $this->Cliente_model->saveCliente($cliente);
@@ -182,8 +176,8 @@ class Reparacion extends CI_Controller
         return $cliente;
     }
 
-    public function guardaCoche($matricula, $bastidor, $marca, $modelo, $anio, $color, $kms)
-    {
+    public function guardaCoche($matricula, $bastidor, $marca, $modelo, $anio, $color, $kms){
+
         $this->load->model('Coche/Coche_model');
         $coche = empaquetaCoche($matricula, $bastidor, $marca, $modelo, $anio, $color, $kms);
         $id = $this->Coche_model->saveCoche($coche);;
@@ -191,8 +185,8 @@ class Reparacion extends CI_Controller
         return $coche;
     }
 
-    public function facturar()
-    {
+    public function facturar(){
+
         if($_SESSION['usuActivo']->rol == 'administrador') {
             $id = $_POST['id'];
             $this->load->model('Reparacion/Reparacion_model');
@@ -202,8 +196,8 @@ class Reparacion extends CI_Controller
         }
     }
 
-    public function desfacturar()
-    {
+    public function desfacturar(){
+
         if($_SESSION['usuActivo']->rol == 'administrador') {
             $id = $_POST['id'];
             $this->load->model('Reparacion/Reparacion_model');
@@ -214,6 +208,7 @@ class Reparacion extends CI_Controller
     }
 
     public function aniadirImagen(){
+
         if($_SESSION['usuActivo']->rol == 'administrador') {
             $id = $_POST['idImagen'];
             $imagen = $_FILES['imagen'];
@@ -229,6 +224,7 @@ class Reparacion extends CI_Controller
     }
 
     public function enviarATaller(){
+
         if($_SESSION['usuActivo']->rol == 'administrador') {
             $id = $_POST['id'];
             $ciudad = $_POST['ciudad'];
@@ -250,6 +246,7 @@ class Reparacion extends CI_Controller
     }
 
     function descargarDatos(){
+
         if($_SESSION['usuActivo']->rol == 'administrador') {
             if (!file_exists('./assets/temp/')) {
                 mkdir('./assets/temp/');

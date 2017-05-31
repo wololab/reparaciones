@@ -11,7 +11,7 @@ class General extends CI_Controller{
 
         $nombre = $_POST['name'];
         $apellido = $_POST['lastName'];
-        $apellido2 = isset($_POST['lastname2']) ? $_POST['lastName2'] : '';
+        $apellido2 = isset($_POST['lastName2']) ? $_POST['lastName2'] : '';
         $direccion = isset($_POST['adress']) ? $_POST['adress'] : '';
         $email = $_POST['email'];
         $telefono = isset($_POST['phone']) ? $_POST['phone'] : '';
@@ -32,8 +32,7 @@ class General extends CI_Controller{
         $mensaje .= "Teléfono: " . $telefono . " \r\n\n";
         $mensaje .= "Razón del contacto: " . $asunto . " \r\n\n";
         $mensaje .= "Mensaje del usuario: " . $texto . " \r\n\n";
-        $mensaje .= "Enviado el " . date('d/m/Y', time()) . "\r\n\n";
-
+        $mensaje .= "Enviado el " . date('d/m/Y H:i:s', time()) . "\r\n\n";
 
         $para = 'info@eborarepair.com';
 

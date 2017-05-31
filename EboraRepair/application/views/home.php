@@ -1,10 +1,9 @@
-<section id="one-parallax" class="parallax" style="background-image: url('<?=base_url()?>assets/img/cabeceras/fondoprueba.jpg');"
+<section id="one-parallax" class="parallax" style="background-image: url('<?=base_url()?>assets/img/cabeceras/fondo.jpg');"
          data-stellar-background-ratio="0.6" data-stellar-vertical-offset="20">
     <div class="mapandslider">
         <div class="overlay1 dm-shadow">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-2 col-md-2 col-sm-12"></div>
                     <div class="col-lg-8 col-md-8 col-sm-12">
                         <div id="property-slider" class="clearfix">
                             <div class="flexslider">
@@ -25,7 +24,7 @@
                                             </div>
                                         </div>
                                         -->
-                                        <img src="<?=base_url()?>assets/img/slider/coche01.jpg" alt="Slider01">
+                                        <img src="<?=base_url()?>assets/img/slider/slider01.jpg" alt="Slider01">
                                     </li>
                                     <li>
                                         <!--
@@ -43,10 +42,10 @@
                                             </div>
                                         </div>
                                         -->
-                                        <img src="<?=base_url()?>assets/img/slider/coche02.jpg" alt="Slider02">
+                                        <img src="<?=base_url()?>assets/img/slider/slider02.jpg" alt="Slider02">
                                     </li>
+                                    <!--
                                     <li>
-                                        <!--
                                         <div class="desc">
                                             <div class="ps-desc">
                                                 <h3>Oferta 03</h3>
@@ -60,13 +59,54 @@
                                                 <a href="#" class="status">Oferta</a>
                                             </div>
                                         </div>
-                                        -->
+
                                         <img src="<?=base_url()?>assets/img/slider/coche03.jpg" alt="Slider03">
                                     </li>
+                                    -->
                                 </ul><!-- end slides -->
                             </div><!-- end flexslider -->
                         </div><!-- end property-slider -->
                     </div><!-- end col-lg-8 -->
+
+                    <div class="col-lg-4 col-md-4 col-sm-12">
+                        <div class="searchmodule clearfix" data-effect="slide-right">
+                            <form method="post" action="<?=base_url()?>general/contactoPost" enctype="multipart/form-data" id="contact_form">
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                    <label for="name">Nombre *</label>
+                                    <input type="text" class="form-control" id="name" name="name"
+                                           placeholder="Su nombre" required="required"/>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                    <label for="lastName">Primer apellido *</label>
+                                    <input type="text" class="form-control" id="lastName" name="lastName"
+                                           placeholder="Su primer apellido" required="required"/>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                    <label for="email">Email *</label>
+                                    <input type="email" id="email" name="email" class="form-control"
+                                           placeholder="Email de contacto" required="required"/>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                    <label for="phone">Teléfono</label>
+                                    <input type="number" id="phone" name="phone" class="form-control"
+                                           placeholder="Teléfono de contacto"/>
+                                </div>
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <label for="message">Mensaje</label>
+                                    <textarea id="message" name="message" class="form-control" placeholder="Escriba su mensaje"
+                                              style="height:170px;"></textarea>
+                                </div>
+                                <input type="hidden" class="form-control" id="matter" name="matter" value="Contacto con reparador"/>
+                                <div class="clearfix"></div>
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <a href="#" class="btn btn-primary btn-block">
+                                        <i class="fa fa-search"></i> SOLICITE UN REPARADOR
+                                    </a>
+                                </div>
+                            </form>
+                        </div><!-- end search module -->
+                    </div><!-- end col-lg-4 -->
+
                 </div><!-- end row -->
             </div><!-- end dm_container -->
         </div>
@@ -76,7 +116,9 @@
 <section class="generalwrapper dm-shadow clearfix">
     <div class="container">
         <div class="row text-center">
+            <!--
             <h3 class="big_title">Ebora Repair</h3>
+            -->
             <div class="services_section clearfix">
                 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                     <div class="servicebox first">
@@ -387,11 +429,12 @@
 </div><!-- /.modal -->
 <!-- End modals -->
 
-<section id="two-parallax" class="parallax" style="background-image: url('<?=base_url()?>assets/img/cabeceras/fondoprueba.jpg');" data-stellar-background-ratio="0.6" data-stellar-vertical-offset="20">
+<section id="two-parallax" class="parallax" style="background-image: url('<?=base_url()?>assets/img/cabeceras/fondo.jpg');" data-stellar-background-ratio="0.6" data-stellar-vertical-offset="20">
     <div class="threewrapper">
         <div class="overlay1 dm-shadow">
             <div class="container">
                 <div class="row">
+                    <!--
                     <div class="text-center clearfix">
                         <h3 class="big_title">Ebora Repair</h3>
                     </div><!-- text-center -->
@@ -426,8 +469,8 @@
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                         <div class="boxes testimonial_widget text-right first" data-effect="slide-left">
                             <div class="image">
-                                <img class="img-circle img-responsive img-thumbnail" alt="Cualidades03"
-                                     src="<?=base_url()?>assets/img/cualidades/cualidades01.jpg">
+                                    <img class="img-circle img-responsive img-thumbnail" alt="Cualidades03"
+                                         src="<?=base_url()?>assets/img/cualidades/cualidades01.jpg">
                             </div>
                             <div class="testimonial_desc">
                                 <h3 class="title">EXPERTOS EN REPARACIÓN</h3>

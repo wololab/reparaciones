@@ -3,7 +3,7 @@
     <div class="row">
         <div class="col-md-8">
             <div id="message-contact"></div>
-            <form method="post" action="<?=base_url()?>usuario/registroPost" id="register_form">
+            <form method="post" action="<?=base_url()?>Usuario/registroPost" id="register_form">
 
                 <div class="row">
                     <div class="col-md-6 col-sm-6">
@@ -11,6 +11,13 @@
                             <label for="name">Nombre *</label>
                             <input type="text" class="form-control" id="name" name="name"
                                    placeholder="Introduzca su nombre" required="required"/>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6">
+                        <div class="form-group">
+                            <label for="pwd">Contraseña *</label>
+                            <input type="text" class="form-control" id="pwd" name="pwd"
+                                   placeholder="Introduzca la contraseña" required="required"/>
                         </div>
                     </div>
                 </div>

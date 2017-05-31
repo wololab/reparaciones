@@ -1,11 +1,11 @@
-<section id="three-parallax" class="parallax" style="background-image: url('<?=base_url()?>assets/img/cabeceras/fondoprueba.jpg');"
+<section id="three-parallax" class="parallax" style="background-image: url('<?=base_url()?>assets/img/cabeceras/fondo.jpg');"
          data-stellar-background-ratio="0.6" data-stellar-vertical-offset="20">
     <div class="threewrapper">
         <div class="overlay1 dm-shadow">
             <div class="container">
                 <div class="row">
                     <div class="text-center clearfix">
-                        <h3 class="big_title">Tipos de impactos <small>Descripción de los tipos de impactos. </small></h3>
+                        <h3 class="big_title">Tipos de impactos</h3>
                     </div>
                     <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                         <div class="boxes first" data-effect="slide-bottom">
@@ -15,13 +15,14 @@
                                     <div class="ImageOverlayH"></div>
                                 </a>
                             </div>
-                            <h2 class="title"> Nombre del impacto 01</h2>
-
+                            <h2 class="title"> Ojo de buey</h2>
+                            <!--
                             <div class="boxed_mini_details1 clearfix">
                                 <p>
                                     Pequeña descripción del impacto.
                                 </p>
                             </div>
+                            -->
                         </div><!-- end boxes -->
                     </div>
 
@@ -33,13 +34,14 @@
                                     <div class="ImageOverlayH"></div>
                                 </a>
                             </div>
-                            <h2 class="title"> Nombre del impacto 02</h2>
-
+                            <h2 class="title"> Margarita</h2>
+                            <!--
                             <div class="boxed_mini_details1 clearfix">
                                 <p>
                                     Pequeña descripción del impacto.
                                 </p>
                             </div>
+                            -->
                         </div><!-- end boxes -->
                     </div>
 
@@ -51,13 +53,14 @@
                                     <div class="ImageOverlayH"></div>
                                 </a>
                             </div>
-                            <h2 class="title"> Nombre del impacto 03</h2>
-
+                            <h2 class="title"> Fisura o grieta</h2>
+                            <!--
                             <div class="boxed_mini_details1 clearfix">
                                 <p>
                                     Pequeña descripción del impacto.
                                 </p>
                             </div>
+                            -->
                         </div><!-- end boxes -->
                     </div>
 
@@ -69,85 +72,14 @@
                                     <div class="ImageOverlayH"></div>
                                 </a>
                             </div>
-                            <h2 class="title"> Nombre del impacto 04</h2>
-
+                            <h2 class="title"> Estrella</h2>
+                            <!--
                             <div class="boxed_mini_details1 clearfix">
                                 <p>
                                     Pequeña descripción del impacto.
                                 </p>
                             </div>
-                        </div><!-- end boxes -->
-                    </div>
-
-                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                        <div class="boxes first" data-effect="slide-bottom">
-                            <div class="ImageWrapper boxes_img">
-                                <img class="img-responsive" src="<?=base_url()?>assets/img/galeria/galeria05.jpg" alt="Galería05">
-                                <a class="fancybox" href="<?=base_url()?>assets/img/galeria/galeria05.jpg">
-                                    <div class="ImageOverlayH"></div>
-                                </a>
-                            </div>
-                            <h2 class="title"> Nombre del impacto 05</h2>
-
-                            <div class="boxed_mini_details1 clearfix">
-                                <p>
-                                    Pequeña descripción del impacto.
-                                </p>
-                            </div>
-                        </div><!-- end boxes -->
-                    </div>
-
-                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                        <div class="boxes" data-effect="slide-bottom">
-                            <div class="ImageWrapper boxes_img">
-                                <img class="img-responsive" src="<?=base_url()?>assets/img/galeria/galeria06.jpg" alt="Galería06">
-                                <a class="fancybox" href="<?=base_url()?>assets/img/galeria/galeria06.jpg">
-                                    <div class="ImageOverlayH"></div>
-                                </a>
-                            </div>
-                            <h2 class="title"> Nombre del impacto 06</h2>
-
-                            <div class="boxed_mini_details1 clearfix">
-                                <p>
-                                    Pequeña descripción del impacto.
-                                </p>
-                            </div>
-                        </div><!-- end boxes -->
-                    </div>
-
-                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                        <div class="boxes" data-effect="slide-bottom">
-                            <div class="ImageWrapper boxes_img">
-                                <img class="img-responsive" src="<?=base_url()?>assets/img/galeria/galeria07.jpg" alt="Galería07">
-                                <a class="fancybox" href="<?=base_url()?>assets/img/galeria/galeria07.jpg">
-                                    <div class="ImageOverlayH"></div>
-                                </a>
-                            </div>
-                            <h2 class="title">Nombre del impacto 07</h2>
-
-                            <div class="boxed_mini_details1 clearfix">
-                                <p>
-                                    Pequeña descripción del impacto.
-                                </p>
-                            </div>
-                        </div><!-- end boxes -->
-                    </div>
-
-                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                        <div class="boxes last" data-effect="slide-bottom">
-                            <div class="ImageWrapper boxes_img">
-                                <img class="img-responsive" src="<?=base_url()?>assets/img/galeria/galeria08.jpg" alt="Galería08">
-                                <a class="fancybox" href="<?=base_url()?>assets/img/galeria/galeria08.jpg">
-                                    <div class="ImageOverlayH"></div>
-                                </a>
-                            </div>
-                            <h2 class="title"> Nombre del impacto 08</h2>
-
-                            <div class="boxed_mini_details1 clearfix">
-                                <p>
-                                    Pequeña descripción del impacto.
-                                </p>
-                            </div>
+                            -->
                         </div><!-- end boxes -->
                     </div>
 

@@ -16,8 +16,9 @@
                         <li><a href="<?=base_url()?>general/contacto">CONTACTO</a></li>
 
                         <?php if (isset($_SESSION['usuActivo']) && $_SESSION['usuActivo'] != null): ?>
-                        <!-- standard drop down -->
-                        <li class="dropdown"><a href="#" data-toggle="dropdown" class="dropdown-toggle">ADMINISTRACIÓN <b class="caret"></b></a>
+                            <!-- standard drop down -->
+                            <li class="dropdown"><a href="#" data-toggle="dropdown" class="dropdown-toggle">
+                                    <?php echo strtoupper($_SESSION['usuActivo']->nombre.' '.$_SESSION['usuActivo']->primer_apellido) ?> <b class="caret"></b></a>
                             <ul class="dropdown-menu" role="menu">
                                 <li><a href="<?=base_url()?>aplicacion/formularioReparacion">Reparaciones</a></li>
 

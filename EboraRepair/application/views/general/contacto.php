@@ -66,7 +66,7 @@
                     <div class="col-md-6 col-sm-6">
                         <div class="form-group">
                             <label for="adress">Motivo del Contacto *</label>
-                            <input type="text" class="form-control" id="adress" name="adress"
+                            <input type="text" class="form-control" id="matter" name="matter"
                                    placeholder="Indíquenos el motivo de su contacto" required="required"/>
                         </div>
                     </div>

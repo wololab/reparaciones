@@ -1,21 +1,21 @@
 <?php
-function empaquetaEmpleado($nick, $password, $nombre, $primerAp, $segundoAp, $dni, $tfno, $email, $rol)
-{
-    $empleado = [
-        'nick' => $nick,
-        'password' => $password,
-        'nombre' => $nombre,
-        'primer_apellido' => $primerAp,
-        'segundo_apellido' => $segundoAp,
-        'dni_o_cod_taller' => $dni,
-        'telefono' => $tfno,
-        'email' => $email,
-        'rol' => $rol,
-        'activo' => true,
-        'primeraVez' => true
-    ];
-    return $empleado;
-}
+
+    function empaquetaEmpleado($nick, $password, $nombre, $primerAp, $segundoAp, $dni, $tfno, $email, $rol){
+        $empleado = [
+            'nick' => $nick,
+            'password' => $password,
+            'nombre' => $nombre,
+            'primer_apellido' => $primerAp,
+            'segundo_apellido' => $segundoAp,
+            'dni_o_cod_taller' => $dni,
+            'telefono' => $tfno,
+            'email' => $email,
+            'rol' => $rol,
+            'activo' => true,
+            'primeraVez' => true
+        ];
+        return $empleado;
+    }
 
 function empaquetaTallerEmpleado($nick, $password, $codTaller, $tfno, $email, $rol)
 {
