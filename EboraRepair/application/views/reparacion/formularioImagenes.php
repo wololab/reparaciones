@@ -3,9 +3,9 @@
         <br/>
         <fieldset>
             <legend>Matrícula *</legend>
-            <!--<label class="btn btn-default btn-file">-->
-                <!--Browse--> <input class="btn btn-file" name="matricula" type="file" accept="image/png, image/jpeg"  onchange="readURL(this, 1)" required="required"/>
-            <!--</label>-->
+            <label class="btn btn-default btn-file">
+                Browse <input class="btn btn-file" name="matricula" type="file" accept="image/png, image/jpeg"  onchange="readURL(this, 1)" required="required"/>
+            </label>
             <br/>
             <br/>
             <img id="prev1" src="#" alt="Matrícula" class="previewForm"/>

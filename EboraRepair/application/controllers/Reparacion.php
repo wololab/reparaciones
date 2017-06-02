@@ -69,7 +69,7 @@ class Reparacion extends CI_Controller{
             $_SESSION['dni']);
         $coche = $this->guardaCoche($_SESSION['matricula'], $_SESSION['bastidor'], $_SESSION['marca'],
             $_SESSION['modelo'], $_SESSION['anioCoche'], $_SESSION['color'], $_SESSION['kms']);
-        $idEmpleado = $_SESSION['idReparador'];
+        $idEmpleado = $_SESSION['usuActivo']->id;
         $this->load->model('Empleado/Empleado_model');
         $empleado = $this->Empleado_model->getEmpleadoById($idEmpleado);
         $reparacion = empaquetaReparacion($_SESSION['nombrePersona'], $_SESSION['ape1Persona'], $_SESSION['ape2Persona'],
@@ -80,7 +80,8 @@ class Reparacion extends CI_Controller{
         $this->load->model('Reparacion/Reparacion_model');
         $idReparacion = $this->Reparacion_model->saveReparacion($reparacion);
         $this->guardaImagenes($_FILES, $idReparacion, $_POST);
-        echo 'Guardada reparación de: ' . $_SESSION['marca'] . ' ' . $_SESSION['modelo'];
+        enmarcar($this, 'reparacion/crearReparacionOK');
+        //echo 'Guardada reparación de: ' . $_SESSION['marca'] . ' ' . $_SESSION['modelo'];
     }
 
     public function guardaImagenes($FILES, $idReparacion, $POST){

@@ -1,4 +1,8 @@
 <div class="container">
+    <br/>
+    <input type="button" class="btn btn-primary" value="Añadir Reparador" data-target="#aniadirRep" data-toggle="modal"/>
+    <br/>
+    <br/>
     <table id="tablaEmpleados" class="" cellspacing="0" width="100%">
         <thead>
         <tr>
@@ -24,17 +28,16 @@
                 <td><?= $empleado->email ?></td>
                 <td><?= $empleado->rol ?></td>
                 <td><?= $empleado->activo ? 'Sí' : 'No' ?></td>
-                <td><?= !$empleado->activo ? 'Ya está dado de baja' : '<input type="button" class="btn" value="Dar de baja"
-                    onclick="darDeBaja(' . $empleado->id . ', this);"/>' ?></td>
+                <td><?= !$empleado->activo ? 'Ya está dado de baja' : ($empleado->id != $_SESSION['usuActivo']->id?'<input type="button" class="btn" value="Dar de baja"
+                    onclick="darDeBaja(' . $empleado->id . ', this);"/>': '') ?></td>
             </tr>
         <?php endforeach; ?>
         </tbody>
     </table>
 
     <br/>
-    <input type="button" class="btn btn-primary" value="Añadir Reparador" data-target="#aniadirRep" data-toggle="modal"/>
-    <br/>
-    <br/>
+
+
 </div>
 
 <!-- Modal -->

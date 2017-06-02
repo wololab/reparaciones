@@ -6,7 +6,7 @@
             <?php if (isset($_SESSION['usuActivo']) && $_SESSION['usuActivo'] != null): ?>
                 <li id="accountlogin2"><a title="Cerrar sesión" href="<?=base_url()?>usuario/logout" ><i class="fa fa-unlock"></i></a></li>
             <?php else: ?>
-                <li id="accountlogin"><a title="Acceso usuarios" href="#" ><i class="fa fa-lock"></i></a></li>
+                <li id="accountlogin3"><a href="#loginModal" data-toggle="modal"><i class="fa fa-lock"></i></a></li>
             <?php endif; ?>
         </ul>
     </div><!--/ sticky-toolbar-->
@@ -18,34 +18,46 @@
         </ul>
     </div>
     <!--/ popup-->
-    <div class="loginpopup">
-        <h3><i class="fa fa-key"></i> Acceso usuarios</h3>
-        <form id="loginform" method="post" name="loginform" action="<?=base_url()?>usuario/loginPost">
-            <div class="form-group">
-                <div class="input-group">
-                    <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                    <input type="text" name="user" class="form-control" placeholder="Nombre de usuario" required="required"/>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="input-group">
-                    <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                    <input type="password" name="pwd" class="form-control" placeholder="Contraseña" required="required"/>
-                </div>
-            </div>
-            <!--
-            <div class="form-group">
-                <div class="checkbox">
-                    <label><input type="checkbox"> Recuérdame</label>
-                </div>
-            </div>
-            -->
-            <div class="form-group">
-                <input type="submit" title="Acceder" class="btn btn-primary" value="Acceder"/>
-            </div>
-        </form>
-    </div><!--/ login-popup-->
+
 </div><!--/ toolbar-wrapp-->
+
+<!-- Modal Login -->
+<div id="loginModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Contenido del modal -->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title"><i class="fa fa-key"></i>Acceso empleados</h4>
+            </div>
+            <div class="modal-body">
+                <form id="loginform" method="post" name="loginform" action="<?=base_url()?>usuario/loginPost">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                            <input type="text" class="form-control" id="user" name="user" placeholder="Nombre usuario" required="required"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                            <input type="password" class="form-control" id="pwd" name="pwd" placeholder="Contraseña" required="required"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" title="Acceder" class="btn btn-primary" value="Acceder"/>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+<!-- Fin Modal -->
 
 <div class="modal fade" id="ContactFormModal" tabindex="-1" role="dialog" aria-labelledby="ContactFormModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -122,7 +134,7 @@
                         <?php if (isset($_SESSION['usuActivo']) && $_SESSION['usuActivo'] != null): ?>
                             <li><a href="<?=base_url()?>aplicacion/formularioReparacion"><?= $_SESSION['usuActivo']->nombre ?></a></li>
                         <?php else: ?>
-                            <li><a href="<?=base_url()?>usuario/login"><i class="fa fa-lock"></i> Acceso Usuarios</a></li>
+                            <li><a href="#loginModal" data-toggle="modal"><i class="fa fa-lock"></i> Acceso Usuarios</a></li>
                         <?php endif; ?>
 
                     </ul><!-- topmenu -->

@@ -1,30 +1,46 @@
 <div class="container">
+    <br/>
     <form onsubmit="return filtra();">
-        <label for="texto">Filtro</label>
-        <input type="text" class="form-control" id="texto" disabled="disabled"/>
-        <label for="filtro">Búsqueda por</label>
-        <select id="filtro" class="form-control">
-            <option selected="selected" value="todos">Todas las Reparaciones</option>
-            <option value="matricula">Matrícula</option>
-            <option value="aseguradora">Aseguradora</option>
-            <option value="nombreReparador">Reparador</option>
-            <option value="nombreTaller">Nombre de Taller</option>
-            <option value="nombre">Cliente</option>
-            <option value="modelo">Modelo de Coche</option>
-            <option value="poblacion">Población</option>
-        </select>
-        <label for="facturada">Facturada</label>
-        <input type="checkbox" id="facturada"/>
-        <label for="desactivar">Desactivar Check</label>
-        <input type="checkbox" id="desactivar"/>
-        <br/>
-        <label>Rango</label>
-        <input type="date" class="form-control" id="fechaInicio" value="2000-01-01" required="required"/>
-        <input type="date" class="form-control" id="fechaFin" value="2020-01-01" required="required"/>
-        <br/>
-        <input id="filtrar" disabled="disabled" type="submit" class="btn btn-primary" value="Filtrar"/>
+        <div class="row">
+            <div class="col-md-3 col-xs-6">
+                <label for="texto">Filtro</label>
+                <input type="text" class="form-control" id="texto" disabled="disabled"/>
+            </div>
+            <div class="col-md-3 col-xs-6">
+                <label for="filtro">Búsqueda por</label>
+                <select id="filtro" class="form-control">
+                    <option selected="selected" value="todos">Todas las Reparaciones</option>
+                    <option value="matricula">Matrícula</option>
+                    <option value="aseguradora">Aseguradora</option>
+                    <option value="nombreReparador">Reparador</option>
+                    <option value="nombreTaller">Nombre de Taller</option>
+                    <option value="nombre">Cliente</option>
+                    <option value="modelo">Modelo de Coche</option>
+                    <option value="poblacion">Población</option>
+                </select>
+            </div>
+            <div class="col-md-3 col-xs-6">
+                <label>Desde:</label>
+                <input type="date" class="form-control" id="fechaInicio" value="2000-01-01" required="required"/>
+            </div>
+            <div class="col-md-3 col-xs-6">
+                <label>Hasta:</label>
+                <input type="date" class="form-control" id="fechaFin" value="2050-01-01" required="required"/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 col-xs-6">
+                <input id="filtrar" disabled="disabled" type="submit" class="btn btn-primary" value="Filtrar"/>
+                <label for="facturada">Facturada</label>
+                <input type="checkbox" id="facturada" disabled="disabled"/>
+                <label for="desactivar">Todas</label>
+                <input type="checkbox" id="desactivar" checked="checked"/>
+            </div>
+        </div>
     </form>
-    <div id="resultado">
+    <hr/>
+
+    <div id="resultado" style="opacity: 0">
         <table id="tablaFiltrada" class="" cellspacing="0" width="100%">
             <thead>
             <tr>
@@ -58,6 +74,7 @@
             </tbody>
         </table>
     </div>
+    <br/><br/>
 </div>
 <script>
     var xml;
@@ -75,7 +92,7 @@
             sPaginationType: "full_numbers",//Full Pagination
             responsive: true,
             scrollX: true,
-
+            bDestroy: true
         });
     };
 
@@ -107,6 +124,8 @@
                 xml = conector.responseXML;
                 //console.log(xml.getElementsByTagName('nombre').length);
                 document.getElementById('filtrar').disabled = false;
+                filtra();
+                $('#resultado').css('opacity', '1');
             }
 
         }
@@ -161,6 +180,7 @@
                 sPaginationType: "full_numbers",//Full Pagination
                 responsive: true,
                 scrollX: true,
+                bDestroy: true
 
             });
            // console.log(reparacionesQueEncajan.length);
@@ -305,4 +325,5 @@
         }
         return encaja;
     }
+
 </script>

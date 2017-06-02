@@ -20,10 +20,14 @@
                             <li class="dropdown"><a href="#" data-toggle="dropdown" class="dropdown-toggle">
                                     <?php echo strtoupper($_SESSION['usuActivo']->nombre.' '.$_SESSION['usuActivo']->primer_apellido) ?> <b class="caret"></b></a>
                             <ul class="dropdown-menu" role="menu">
-                                <li><a href="<?=base_url()?>aplicacion/formularioReparacion">Reparaciones</a></li>
+                                <li><a href="<?=base_url()?>aplicacion/formularioReparacion">Nueva Reparación</a></li>
 
                             <?php if($_SESSION['usuActivo']->rol == 'administrador'):?>
-                                <li><a href="<?=base_url()?>administracion/panel">Panel de control</a></li>
+                                <li><a href="<?=base_url()?>administracion/filtros">Lista de Reparaciones</a></li>
+
+                                <li><a href="<?=base_url()?>administracion/listaEmpleados">Lista de Empleados</a></li>
+
+                                <!--<li><a href="<?=base_url()?>administracion/panel">Panel de control</a></li>-->
                             <?php endif; ?>
 
                                 <li><a href="<?=base_url()?>usuario/logout">Cerrar Sesión</a></li>
