@@ -119,6 +119,30 @@
     <!-- Fin Modal -->
 <?php endif; ?>
 
+<!-- Modal Baja -->
+<div id="bajaModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Contenido del modal -->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Baja de Empleado</h4>
+            </div>
+            <div class="modal-body">
+                <h1>¿Desea dar de baja al empleado? Este empleado no podrá ser recuperado</h1>
+                <input type="button" value="Sí" id="bajaBtn" data-dismiss="modal" class="btn btn-success"/>
+                <input type="button" value="No" data-dismiss="modal" class="btn btn-danger"/>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+<!-- Fin Modal -->
+
 <script>
     var admitido = false;
     window.onload = function () {
@@ -168,7 +192,12 @@
 
     }
 
-    function darDeBaja(id, boton) {
+
+    function darDeBaja(id, boton){
+        $('#bajaBtn').on('click', function(){darDeBajaPost(id, boton)});
+        $('#bajaModal').modal('show');
+    }
+    function darDeBajaPost(id, boton) {
         var conector = new XMLHttpRequest();
 
         var data = 'id=' + id;

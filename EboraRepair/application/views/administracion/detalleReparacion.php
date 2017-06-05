@@ -179,10 +179,12 @@
                                 <strong>CIF: </strong> <?= $reparacion->taller->cif ?>
                             </div>
                         </div>
+                        <input type="button" class="btn" value="Editar Taller" onclick="editarTaller();"/>
                     </fieldset>
                 </div>
             <?php endif; ?>
             <a href="<?=base_url()?>reparacion/descargarDatos?id=<?=$reparacion->id?>" class="btn">Descargar Datos</a>
+            <a href="<?=base_url()?>reparacion/editarReparacion?id=<?=$reparacion->id?>" class="btn">Editar Reparación</a>
         </div>
     </div>
     </div>
@@ -223,21 +225,21 @@
             </div>
             <div class="modal-body">
                 <form class="form" action="<?= base_url() ?>reparacion/enviarATaller"
-                      method="post">
+                      method="post" id="tallerForm">
                     <input type="hidden" name="id" value="<?=$reparacion->id?>"/>
-                    <label for="nombre">Nombre del Taller</label>
-                    <input type="text" id="nombre" name="nombre" required="required" class="form-control"/>
+                    <label for="nombr">Nombre del Taller</label>
+                    <input type="text" id="nombr" name="nombre" required="required" class="form-control"/>
                     <label for="ciudad">Ciudad</label>
                     <input type="text" class="form-control" id="ciudad" name="ciudad" required="required"/>
-                    <label for="telefono">Teléfono</label>
-                    <input type="text" class="form-control" id="telefono" name="telefono" required="required"
+                    <label for="tel">Teléfono</label>
+                    <input type="text" class="form-control" id="tel" name="telefono" required="required"
                            pattern="[6789]\d{8}" title="El teléfono debe empezar por 6, 7, 8 o 9 y tener 8 números más"/>
                     <label for="direccion">Dirección</label>
                     <input type="text" class="form-control" name="direccion" id="direccion" required="required"/>
                     <label for="cif">CIF</label>
                     <input type="text" class="form-control" id="cif" name="cif" required="required"/>
                     <br/>
-                    <input type="submit" value="Asignar a Taller" class="btn btn-primary"/>
+                    <input type="submit" value="Asignar a Taller" class="btn btn-primary" id="editarTallerBtn"/>
                     <br/>
                 </form>
             </div>
@@ -285,4 +287,17 @@
         $('#titulo').html(titulo);
         $('#idImagen').val(idImagen);
     }
+    <?php if($reparacion->taller != null) : ?>
+    function editarTaller(){
+        $('#nombr').val('<?=$reparacion->taller->nombre?>');
+        $('#ciudad').val('<?=$reparacion->taller->ciudad?>');
+        $('#tel').val('<?=$reparacion->taller->telefono?>');
+        $('#direccion').val('<?=$reparacion->taller->direccion?>');
+        $('#cif').val('<?=$reparacion->taller->cif?>');
+        $('#tallerForm').attr('action', '<?=base_url()?>reparacion/editarTaller');
+        $('#editarTallerBtn').val('Editar Taller');
+        $('#asignarTaller').modal('show');
+    }
+
+    <?php endif; ?>
 </script>

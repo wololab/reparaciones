@@ -36,17 +36,23 @@ class Reparacion extends CI_Controller{
         $_SESSION['cp'] = $_POST['cp'];
         $_SESSION['poblacion'] = $_POST['poblacion'];
         $_SESSION['telefono'] = $_POST['telefono'];
-        $_SESSION['email'] = $_POST['email'];
+        $_SESSION['email'] = isset($_POST['email']) ? $_POST['email'] : '';
         $_SESSION['dni'] = $_POST['dni'];
 
         /* Datos Siniestro */
-        $_SESSION['numeroSiniestro'] = $_POST['nSin'];
+        $_SESSION['numeroSiniestro'] = isset($_POST['nSin']) ? $_POST['nSin'] : '';
         $_SESSION['numeroPoliza'] = $_POST['nPol'];
-        $fechaSiniestro = $_POST['fechaSin'];
-        $fechaSiniestroSplit = explode('-', $fechaSiniestro);
-        $_SESSION['diaSiniestro'] = $fechaSiniestroSplit[2];
-        $_SESSION['mesSiniestro'] = $fechaSiniestroSplit[1];
-        $_SESSION['anioSiniestro'] = $fechaSiniestroSplit[0];
+        $fechaSiniestro = isset($_POST['fechaSin']) ? $_POST['fechaSin'] : '';
+        if($fechaSiniestro != '') {
+            $fechaSiniestroSplit = explode('-', $fechaSiniestro);
+            $_SESSION['diaSiniestro'] = $fechaSiniestroSplit[2];
+            $_SESSION['mesSiniestro'] = $fechaSiniestroSplit[1];
+            $_SESSION['anioSiniestro'] = $fechaSiniestroSplit[0];
+        } else {
+            $_SESSION['diaSiniestro'] = '';
+            $_SESSION['mesSiniestro'] = '';
+            $_SESSION['anioSiniestro'] = '';
+        }
         $_SESSION['aseguradora'] = $_POST['aseguradora'];
         $_SESSION['tipo'] = $_POST['tipo'];
 
@@ -287,10 +293,18 @@ class Reparacion extends CI_Controller{
                 if ($dato == '') $dato = 'no asignado';
                 $datos .= $k . ' - ' . $dato . PHP_EOL;
             }
+            $datosAIgnorar = [
+                'password',
+                'primera_vez',
+                'rol',
+                'activo'
+
+            ];
             $datos .= PHP_EOL;
             $datos .= 'Datos de reparador con id: ' . $reparacion->empleado_id . ':' . PHP_EOL;
             foreach ($reparacion->empleado as $k => $dato) {
                 if ($dato == '') $dato = 'no asignado';
+                if(!in_array($k, $datosAIgnorar))
                 $datos .= $k . ' - ' . $dato . PHP_EOL;
             }
             if ($reparacion->taller != null) {
@@ -329,4 +343,147 @@ class Reparacion extends CI_Controller{
         }
     }
 
+    public function editarReparacion(){
+        if($_SESSION['usuActivo']->rol == 'administrador') {
+            $id = $_GET['id'];
+            $this->load->model('Reparacion/Reparacion_model');
+            $reparacion = $this->Reparacion_model->getReparacionById($id);
+            $data['reparacion'] = $reparacion;
+            enmarcar($this, 'administracion/editarReparacion', $data);
+        } else {
+            redirect(base_url());
+        }
+    }
+
+    public function editarReparacionPost(){
+        if($_SESSION['usuActivo']->rol == 'administrador') {
+            /* Fecha y hora */
+            $fecha = $_POST['fecha'];
+            $datos['hora'] = $_POST['hora'];
+            $fechaSplit = explode('-', $fecha);
+            $datos['dia'] = $fechaSplit[2];
+            $datos['mes'] = $fechaSplit[1];
+            $datos['anio'] = $fechaSplit[0];
+
+            /* Datos Vehículo */
+            $datos['marca'] = $_POST['marca'];
+            $datos['modelo'] = $_POST['modelo'];
+            $datos['anioCoche'] = $_POST['anio'];
+            $datos['matricula'] = $_POST['matricula'];
+            $datos['bastidor'] = $_POST['bastidor'];
+            $datos['kms'] = $_POST['kms'];
+            $datos['color'] = isset($_POST['color']) ? $_POST['color'] : 'Color no definido';
+
+            /* Datos Asegurado */
+            $datos['nombre'] = $_POST['nombre'];
+            $datos['ape1'] = $_POST['ape1'];
+            $datos['ape2'] = $_POST['ape2'];
+            $datos['direccion'] = $_POST['direccion'];
+            $datos['cp'] = $_POST['cp'];
+            $datos['poblacion'] = $_POST['poblacion'];
+            $datos['telefono'] = $_POST['telefono'];
+            $datos['email'] = isset($_POST['email']) ? $_POST['email'] : '';
+            $datos['dni'] = $_POST['dni'];
+
+            /* Datos Siniestro */
+            $datos['numeroSiniestro'] = isset($_POST['nSin']) ? $_POST['nSin'] : '';
+            $datos['numeroPoliza'] = $_POST['nPol'];
+            $fechaSiniestro = isset($_POST['fechaSin']) ? $_POST['fechaSin'] : '';
+            if($fechaSiniestro != '') {
+                $fechaSiniestroSplit = explode('-', $fechaSiniestro);
+                $datos['diaSiniestro'] = $fechaSiniestroSplit[2];
+                $datos['mesSiniestro'] = $fechaSiniestroSplit[1];
+                $datos['anioSiniestro'] = $fechaSiniestroSplit[0];
+            } else {
+                $datos['diaSiniestro'] = '';
+                $datos['mesSiniestro'] = '';
+                $datos['anioSiniestro'] = '';
+            }
+            $datos['aseguradora'] = $_POST['aseguradora'];
+            $datos['tipo'] = $_POST['tipo'];
+
+            /* Persona que acude con el vehículo al taller */
+            $datos['nombrePersona'] = $_POST['nombrePer'];
+            $datos['ape1Persona'] = $_POST['ape1Per'];
+            $datos['ape2Persona'] = $_POST['ape2Per'];
+            $datos['dniPersona'] = $_POST['dni'];
+            $datos['telefonoPersona'] = $_POST['telefonoPer'];
+
+
+            $this->load->helper('empaquetar');
+            $this->load->model('Reparacion/Reparacion_model');
+
+            $reparacion = $this->Reparacion_model->getReparacionById($_POST['id']);
+
+            /* Fecha y Hora */
+            $reparacion->dia = $datos['dia'];
+            $reparacion->mes = $datos['mes'];
+            $reparacion->anyo = $datos['anio'];
+            $reparacion->hora = $datos['hora'];
+
+            /* Datos Vehículo */
+            $reparacion->coche->marca = $datos['marca'];
+            $reparacion->coche->modelo = $datos['modelo'];
+            $reparacion->coche->anyo = $datos['anio'];
+            $reparacion->coche->matricula = $datos['matricula'];
+            $reparacion->coche->bastidor = $datos['bastidor'];
+            $reparacion->coche->kms = $datos['kms'];
+            $reparacion->coche->color = $datos['color'];
+
+            /* Datos Asegurado */
+            $reparacion->cliente->nombre = $datos['nombre'];
+            $reparacion->cliente->primer_apellido = $datos['ape1'];
+            $reparacion->cliente->segundo_apellido = $datos['ape2'];
+            $reparacion->cliente->direccion = $datos['direccion'];
+            $reparacion->cliente->cp = $datos['cp'];
+            $reparacion->cliente->poblacion = $datos['poblacion'];
+            $reparacion->cliente->telefono = $datos['telefono'];
+            $reparacion->cliente->email = $datos['email'];
+            $reparacion->cliente->dni = $datos['dni'];
+
+            /* Datos Siniestro */
+            $reparacion->numero_siniestro = $datos['numeroSiniestro'];
+            $reparacion->numero_poliza = $datos['numeroPoliza'];
+            $reparacion->dia_siniestro = $datos['diaSiniestro'];
+            $reparacion->mes_siniestro = $datos['mesSiniestro'];
+            $reparacion->anyo_siniestro = $datos['anioSiniestro'];
+            $reparacion->aseguradora = $datos['aseguradora'];
+            $reparacion->tipo = $datos['tipo'];
+
+            /* Persona que acude con el vehículo al taller */ //TODO
+            $reparacion->nombre_ordenante = $datos['nombrePersona'];
+            $reparacion->primer_apellido_ordenante = $datos['ape1Persona'];
+            $reparacion->segundo_apellido_ordenante = $datos['ape2Persona'];
+            $reparacion->dni_ordenante = $datos['dniPersona'];
+            $reparacion->telefono_ordenante = $datos['telefonoPersona'];
+
+            $this->Reparacion_model->saveReparacion($reparacion);
+
+            enmarcar($this, 'administracion/editarReparacionOK');
+        } else {
+            redirect(base_url());
+        }
+    }
+
+    public function editarTaller(){
+        if($_SESSION['usuActivo']->rol == 'administrador') {
+            $id = $_POST['id'];
+            $this->load->model('Reparacion/Reparacion_model');
+            $reparacion = $this->Reparacion_model->getReparacionById($id);
+            $nombre = $_POST['nombre'];
+            $ciudad = $_POST['ciudad'];
+            $telefono = $_POST['telefono'];
+            $cif = $_POST['cif'];
+            $direccion = $_POST['direccion'];
+            $reparacion->taller->nombre = $nombre;
+            $reparacion->taller->ciudad = $ciudad;
+            $reparacion->taller->telefono = $telefono;
+            $reparacion->taller->cif = $cif;
+            $reparacion->taller->direccion = $direccion;
+            $this->Reparacion_model->saveReparacion($reparacion);
+           redirect(base_url() . 'Administracion/detalleReparacion?id=' . $id);
+        } else {
+            redirect(base_url());
+        }
+    }
 }
